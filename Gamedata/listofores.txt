@@ -1,0 +1,10 @@
+Titanium
+Sulfur
+Germanium
+Magnesium
+Silicon
+Bauxite
+Luminite
+Uranium
+
+

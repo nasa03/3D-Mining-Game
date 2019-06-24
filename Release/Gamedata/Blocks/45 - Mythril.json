@@ -1,0 +1,18 @@
+{
+	"id":45,
+	"name":"Mythril",
+	"desc":"",
+	"health":1500.0,
+	"minLayer":2000.0,
+	"maxLayer":2500.0,
+	"cash":1500.0,
+	"xp":500,
+	"appearance":1.0,
+	"colorRed":29,
+	"colorGreen":140,
+	"colorBlue":88,
+	"special":["isOre"],
+	"texture":"none",
+	"normal":"WIP",
+	"material":"Metal"
+}

@@ -1,0 +1,15 @@
+{
+	"id":39,
+	"name":"Garnet",
+	"desc":"",
+	"health":8000.0,
+	"cash":2750.0,
+	"xp":5120,
+	"colorRed":150,
+	"colorGreen":66,
+	"colorBlue":33,
+	"special":["isOre"],
+	"texture":"none",
+	"normal":"WIP",
+	"material":"Metal"
+}

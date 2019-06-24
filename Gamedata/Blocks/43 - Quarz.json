@@ -1,0 +1,18 @@
+{
+	"id":43,
+	"name":"Quarz",
+	"desc":"",
+	"health":200.0,
+	"minLayer":1200.0,
+	"maxLayer":2000.0,
+	"cash":75.0,
+	"xp":25,
+	"appearance":10.0,
+	"colorRed":205,
+	"colorGreen":204,
+	"colorBlue":209,
+	"special":["isOre"],
+	"texture":"none",
+	"normal":"WIP",
+	"material":"Metal"
+}

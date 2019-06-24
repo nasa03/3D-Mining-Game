@@ -1,0 +1,15 @@
+{
+	"id":13,
+	"name":"Hard Outer Core",
+	"desc":"",
+	"health":1068000.0,
+	"cash":0.0,
+	"xp":0,
+	"colorRed":183,
+	"colorGreen":128,
+	"colorBlue":0,
+	"special":["isLayerBlock"],
+	"texture":"none",
+	"normalLocation":"WIP",
+	"material":"BlockMaterial"
+}

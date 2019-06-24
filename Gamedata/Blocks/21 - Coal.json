@@ -1,0 +1,15 @@
+{
+	"id":21,
+	"name":"Coal",
+	"desc":"A cool material that lets you cook stuff. Also pretty unhealthy for the enviourment",
+	"health":5.0,
+	"cash":3.0,
+	"xp":2,
+	"colorRed":59,
+	"colorGreen":61,
+	"colorBlue":66,
+	"special":["isOre"],
+	"texture":"none",
+	"normal":"WIP",
+	"material":"BlockMaterial"
+}

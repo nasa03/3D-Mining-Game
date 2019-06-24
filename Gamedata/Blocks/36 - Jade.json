@@ -1,0 +1,15 @@
+{
+	"id":36,
+	"name":"Jade",
+	"desc":"",
+	"health":5000.0,
+	"cash":1000.0,
+	"xp":1000,
+	"colorRed":43,
+	"colorGreen":175,
+	"colorBlue":87,
+	"special":["isOre"],
+	"texture":"none",
+	"normal":"WIP",
+	"material":"Metal"
+}

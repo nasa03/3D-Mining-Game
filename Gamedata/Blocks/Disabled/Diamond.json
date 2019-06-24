@@ -1,0 +1,1 @@
+{"name":"Diamond","health":4500.0,"minLayer":300.0,"maxLayer":600.0,"cash":500.0,"xp":150,"appearance":1.0,"colorRed":0,"colorGreen":242,"colorBlue":255,"special":["isOre"],"textureLocation":"WIP","normalLocation":"WIP","material":"Transparent"}

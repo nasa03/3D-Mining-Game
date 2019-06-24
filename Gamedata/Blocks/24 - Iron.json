@@ -1,0 +1,18 @@
+{
+	"id":24,
+	"name":"Iron",
+	"desc":"The very popular material for almost everything",
+	"health":500.0,
+	"minLayer":300.0,
+	"maxLayer":900.0,
+	"cash":50.0,
+	"xp":20,
+	"appearance":20.0,
+	"colorRed":196,
+	"colorGreen":196,
+	"colorBlue":196,
+	"special":["isOre"],
+	"texture":"none",
+	"normal":"WIP",
+	"material":"Metal"
+}

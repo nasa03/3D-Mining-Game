@@ -1,0 +1,15 @@
+{
+	"id":40,
+	"name":"Onyx",
+	"desc":"",
+	"health":10000.0,
+	"cash":10000.0,
+	"xp":6000,
+	"colorRed":59,
+	"colorGreen":63,
+	"colorBlue":63,
+	"special":["isOre"],
+	"texture":"none",
+	"normal":"WIP",
+	"material":"Metal"
+}

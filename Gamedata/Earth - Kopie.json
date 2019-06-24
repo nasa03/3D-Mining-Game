@@ -1,0 +1,203 @@
+{
+   "id":0,
+   "name":"Earth",
+   "desc":"",
+   "layers":[
+	{
+		"minLayer":0,
+		"maxLayer":50,
+		"radioactivity":0,
+		"blocks":[
+			{
+					"block" : 3,
+					"appearance" : 600.0,
+					"ignoreLuck" : true
+			},
+			{
+					"block" : "Aluminium",
+					"appearance" : 15.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Coal",
+					"appearance" : 25.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Tin",
+					"appearance" : 10.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Zinc",
+					"appearance" : 10.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Copper",
+					"appearance" : 25.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Crate-F",
+					"appearance" : 1.0,
+					"ignoreLuck" : false
+			}
+		]
+	},
+	
+	{
+		"minLayer":50,
+		"maxLayer":100,
+		"radioactivity":0,
+		"blocks":[
+			{
+					"block" : "Hard Dirt",
+					"appearance" : 600.0,
+					"ignoreLuck" : true
+			},
+			{
+					"block" : "Aluminium",
+					"appearance" : 10.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Copper",
+					"appearance" : 25.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Tin",
+					"appearance" : 5.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Coal",
+					"appearance" : 10.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Lead",
+					"appearance" : 15.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Crate-F",
+					"appearance" : 1.25,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Crate-E",
+					"appearance" : 0.1,
+					"ignoreLuck" : false
+			}
+		]
+	},	
+
+	{
+		"minLayer":100,
+		"maxLayer":150,
+		"radioactivity":0,
+		"blocks":[
+			{
+					"block" : "Stone",
+					"appearance" : 600.0,
+					"ignoreLuck" : true
+			},
+			{
+					"block" : "Iron",
+					"appearance" : 10.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Copper",
+					"appearance" : 15.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Silver",
+					"appearance" : 2.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Coal",
+					"appearance" : 7.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Lead",
+					"appearance" : 20.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Tungsten",
+					"appearance" : 2.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Crate-E",
+					"appearance" : 1.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Crate-D",
+					"appearance" : 0.1,
+					"ignoreLuck" : false
+			}
+		]
+	},			
+
+	{
+		"minLayer":150,
+		"maxLayer":200,
+		"radioactivity":0,
+		"blocks":[
+			{
+					"block" : "Hard Stone",
+					"appearance" : 600.0,
+					"ignoreLuck" : true
+			},
+			{
+					"block" : "Iron",
+					"appearance" : 25.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Gold",
+					"appearance" : 5.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Diamond",
+					"appearance" : 0.2,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Silver",
+					"appearance" : 10.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Lead",
+					"appearance" : 5.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Tungsten",
+					"appearance" : 10.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Crate-E",
+					"appearance" : 1.0,
+					"ignoreLuck" : false
+			},
+			{
+					"block" : "Crate-D",
+					"appearance" : 0.1,
+					"ignoreLuck" : false
+			}
+		]
+	}				
+   ]
+}

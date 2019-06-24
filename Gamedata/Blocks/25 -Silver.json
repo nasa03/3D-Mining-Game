@@ -1,0 +1,15 @@
+{
+	"id":25,
+	"name":"Silver",
+	"desc":"Woo! Shiny! It's no use!",
+	"health":250.0,
+	"cash":20.0,
+	"xp":25,
+	"colorRed":237,
+	"colorGreen":237,
+	"colorBlue":237,
+	"special":["isOre"],
+	"texture":"none",
+	"normal":"WIP",
+	"material":"Metal"
+}

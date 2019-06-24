@@ -1,0 +1,15 @@
+{
+	"id":20,
+	"name":"Tin",
+	"desc":"",
+	"health":3.0,
+	"cash":2.0,
+	"xp":3,
+	"colorRed":235,
+	"colorGreen":235,
+	"colorBlue":235,
+	"special":["isOre"],
+	"texture":"none",
+	"normalLocation":"WIP",
+	"material":"Metal"
+}

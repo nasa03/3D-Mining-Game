@@ -1,0 +1,16 @@
+{
+	"id":33,
+	"name":"Lapis Lazuli",
+	"desc":"",
+	"health":5000.0,
+	"cash":1000.0,
+	"xp":250,
+	"colorRed":113,
+	"colorGreen":110,
+	"colorBlue":145,
+
+	"special":["isOre"],
+	"texture":"none",
+	"normal":"WIP",
+	"material":"Metal"
+}

@@ -1,0 +1,15 @@
+{
+	"id":32,
+	"name":"Emerald",
+	"desc":"Not as good as Diamond, but still very nice!",
+	"health":1000.0,
+	"cash":12000.0,
+	"xp":3000,
+	"colorRed":104,
+	"colorGreen":255,
+	"colorBlue":112,
+	"special":["isOre"],
+	"texture":"none",
+	"normal":"WIP",
+	"material":"Metal"
+}

@@ -1,0 +1,15 @@
+{
+	"id":30,
+	"name":"Titanium",
+	"desc":"",
+	"health":3500.0,
+	"cash":500.0,
+	"xp":1000,
+	"colorRed":247,
+	"colorGreen":255,
+	"colorBlue":251,
+	"special":["isOre"],
+	"texture":"none",
+	"normal":"WIP",
+	"material":"Metal"
+}

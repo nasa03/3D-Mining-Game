@@ -1,0 +1,18 @@
+{
+	"id":56,
+	"name":"Crate-E",
+	"desc":"",
+	"health":1000.0,
+	"cash":0.0,
+	"xp":0,
+	"colorRed":168,
+	"colorGreen":107,
+	"colorBlue":0,
+	"special":[
+		"isOre",
+		"isInteractable"
+	],
+	"texture":"crate",
+	"normalLocation":"WIP",
+	"material":"BlockMaterial"
+}

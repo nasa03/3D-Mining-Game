@@ -1,0 +1,15 @@
+{
+	"id":27,
+	"name":"Gold",
+	"desc":"Gooooold!!!! :O",
+	"health":250.0,
+	"cash":100.0,
+	"xp":50,
+	"colorRed":209,
+	"colorGreen":169,
+	"colorBlue":12,
+	"special":["isOre"],
+	"texture":"none",
+	"normal":"WIP",
+	"material":"Metal"
+}

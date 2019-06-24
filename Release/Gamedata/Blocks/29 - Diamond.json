@@ -1,0 +1,15 @@
+{
+	"id":29,
+	"name":"Diamond",
+	"desc":"DIAMONDS!!!!!!!!!!!!!!!!! :DDDDDD",
+	"health":5000.0,
+	"cash":5000.0,
+	"xp":2500,
+	"colorRed":104,
+	"colorGreen":255,
+	"colorBlue":255,
+	"special":["isOre"],
+	"texture":"none",
+	"normal":"WIP",
+	"material":"Metal"
+}

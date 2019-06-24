@@ -1,0 +1,15 @@
+{
+	"id":26,
+	"name":"Tungsten",
+	"desc":"Hello there is description! ;D",
+	"health":1250.0,
+	"cash":30.0,
+	"xp":30,
+	"colorRed":216,
+	"colorGreen":216,
+	"colorBlue":216,
+	"special":["isOre"],
+	"texture":"none",
+	"normal":"WIP",
+	"material":"Metal"
+}

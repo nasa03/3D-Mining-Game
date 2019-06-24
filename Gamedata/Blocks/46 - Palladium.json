@@ -1,0 +1,18 @@
+{
+	"id":46,
+	"name":"Palladium",
+	"desc":"",
+	"health":1500.0,
+	"minLayer":2000.0,
+	"maxLayer":2500.0,
+	"cash":2500.0,
+	"xp":1000,
+	"appearance":0.5,
+	"colorRed":35,
+	"colorGreen":34,
+	"colorBlue":56,
+	"special":["isOre"],
+	"texture":"none",
+	"normal":"WIP",
+	"material":"Metal"
+}

@@ -1,0 +1,15 @@
+{
+	"id":19,
+	"name":"Copper",
+	"desc":"",
+	"health":15.0,
+	"cash":5.0,
+	"xp":5,
+	"colorRed":255,
+	"colorGreen":174,
+	"colorBlue":100,
+	"special":["isOre"],
+	"texture":"none",
+	"normalLocation":"WIP",
+	"material":"Metal"
+}

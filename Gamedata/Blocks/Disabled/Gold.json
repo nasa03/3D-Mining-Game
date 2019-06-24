@@ -1,0 +1,1 @@
+{"name":"Gold","health":100.0,"minLayer":99.0,"maxLayer":300.0,"cash":50.0,"xp":15,"appearance":5.0,"colorRed":227,"colorGreen":208,"colorBlue":0,"special":["isOre"],"textureLocation":"WIP","normalLocation":"WIP","material":"Metal"}

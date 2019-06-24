@@ -1,0 +1,15 @@
+{
+	"id":8,
+	"name":"Upper Mantle",
+	"desc":"",
+	"health":10240.0,
+	"cash":0.0,
+	"xp":0,
+	"colorRed":155,
+	"colorGreen":144,
+	"colorBlue":43,
+	"special":["isLayerBlock"],
+	"texture":"none",
+	"normalLocation":"WIP",
+	"material":"BlockMaterial"
+}

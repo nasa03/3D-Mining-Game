@@ -1,0 +1,1 @@
+If you wanna edit these .json files, I suggest you formate these values values inside them first with https://jsonformatter.curiousconcept.com/

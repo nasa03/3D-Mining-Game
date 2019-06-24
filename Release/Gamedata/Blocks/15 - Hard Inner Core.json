@@ -1,0 +1,15 @@
+{
+	"id":15,
+	"name":"Hard Inner Core",
+	"desc":"",
+	"health":18608540.0,
+	"cash":0.0,
+	"xp":0,
+	"colorRed":183,
+	"colorGreen":67,
+	"colorBlue":0,
+	"special":["isLayerBlock"],
+	"texture":"none",
+	"normalLocation":"WIP",
+	"material":"BlockMaterial"
+}

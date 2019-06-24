@@ -1,0 +1,71 @@
+{
+   "id":0,
+   "name":"Earth",
+   "desc":"",
+   "layers":[
+	{
+		"minLayer":0,
+		"maxLayer":50,
+		"radioactivity":0,
+		"blocks":[
+			{ "block" : 2, "appearance" : 600.0, "ignoreLuck" : true },
+			{ "block" : 18, "appearance" : 15.0, "ignoreLuck" : false },
+			{ "block" : 21, "appearance" : 25.0, "ignoreLuck" : false },
+			{ "block" : 20, "appearance" : 10.0, "ignoreLuck" : false },
+			{ "block" : 22, "appearance" : 10.0, "ignoreLuck" : false },
+			{ "block" : 19, "appearance" : 25.0, "ignoreLuck" : false },
+			{ "block" : 55, "appearance" : 1.0, "ignoreLuck" : false }
+		]
+	},
+	
+	{
+		"minLayer":50,
+		"maxLayer":100,
+		"radioactivity":0,
+		"blocks":[
+			{ "block" : 3, "appearance" : 600.0, "ignoreLuck" : true },
+			{ "block" : 18, "appearance" : 10.0, "ignoreLuck" : false },
+			{ "block" : 19, "appearance" : 25.0, "ignoreLuck" : false },
+			{ "block" : 20, "appearance" : 5.0, "ignoreLuck" : false },
+			{ "block" : 21, "appearance" : 10.0, "ignoreLuck" : false },
+			{ "block" : 23, "appearance" : 15.0, "ignoreLuck" : false },
+			{ "block" : 55, "appearance" : 1.25, "ignoreLuck" : false },
+			{ "block" : 56, "appearance" : 0.1, "ignoreLuck" : false }
+		]
+	},	
+
+	{
+		"minLayer":100,
+		"maxLayer":150,
+		"radioactivity":0,
+		"blocks":[
+			{ "block" : 4, "appearance" : 600.0, "ignoreLuck" : true },
+			{ "block" : 24, "appearance" : 10.0, "ignoreLuck" : false },
+			{ "block" : 19, "appearance" : 15.0, "ignoreLuck" : false },
+			{ "block" : 25, "appearance" : 2.0, "ignoreLuck" : false },
+			{ "block" : 21, "appearance" : 7.0, "ignoreLuck" : false },
+			{ "block" : 23, "appearance" : 20.0, "ignoreLuck" : false },
+			{ "block" : 26, "appearance" : 2.0, "ignoreLuck" : false },
+			{ "block" : 56, "appearance" : 1.0, "ignoreLuck" : false },
+			{ "block" : 57, "appearance" : 0.1, "ignoreLuck" : false }
+		]
+	},			
+
+	{
+		"minLayer":150,
+		"maxLayer":200,
+		"radioactivity":0,
+		"blocks":[
+			{ "block" : 5, "appearance" : 600.0, "ignoreLuck" : true },
+			{ "block" : 24, "appearance" : 25.0, "ignoreLuck" : false },
+			{ "block" : 27, "appearance" : 5.0, "ignoreLuck" : false },
+			{ "block" : 29, "appearance" : 0.2, "ignoreLuck" : false },
+			{ "block" : 25, "appearance" : 10.0, "ignoreLuck" : false },
+			{ "block" : 23, "appearance" : 5.0, "ignoreLuck" : false },
+			{ "block" : 26, "appearance" : 10.0, "ignoreLuck" : false },
+			{ "block" : 56, "appearance" : 1.0, "ignoreLuck" : false },
+			{ "block" : 57, "appearance" : 0.1, "ignoreLuck" : false}
+		]
+	}				
+   ]
+}

@@ -1,0 +1,15 @@
+{
+	"id":22,
+	"name":"Zinc",
+	"desc":"",
+	"health":5.0,
+	"cash":5.0,
+	"xp":2,
+	"colorRed":234,
+	"colorGreen":234,
+	"colorBlue":234,
+	"special":["isOre"],
+	"texture":"none",
+	"normal":"WIP",
+	"material":"Metal"
+}
