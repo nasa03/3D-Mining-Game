@@ -13,7 +13,7 @@ public abstract class Stats
     public abstract string format { get; protected set; }
     public abstract float finalValue { get; protected set; }
 
-    public void checkIfMaxLevel()
+    public void CheckIfMaxLevel()
     {
         if (level > maxLevel)
             level = maxLevel;
@@ -26,7 +26,7 @@ public abstract class Stats
             return;
         }
         level += amount;
-        checkIfMaxLevel();
+        CheckIfMaxLevel();
     }
 
     public void LevelDown(int amount)
@@ -35,7 +35,7 @@ public abstract class Stats
         {
             level -= amount;
         }
-        checkIfMaxLevel();
+        CheckIfMaxLevel();
     }
     public abstract float CalculateFinal();
 }
@@ -100,14 +100,14 @@ public class PlayerStats : Stats
             return;
 
         if (Gamemanager.main.player.cash >= finalCost)
-            Gamemanager.main.player.giveCash(-finalCost);
+            Gamemanager.main.player.GiveCash(-finalCost);
 
         LevelUp(level);
         calculateAll();
     }
 
     //Adds a stat modifier to the stat
-    public void addModifier(StatModifier mod, int amount) {
+    public void AddModifier(StatModifier mod, int amount) {
 
         if (!modifiers.Contains(mod)) 
             modifiers.Add(mod);
@@ -117,7 +117,7 @@ public class PlayerStats : Stats
     }
 
     //Subtracts a stat modifier to the stat
-    public void subtractModifier(StatModifier mod, int amount) {
+    public void SubtractModifier(StatModifier mod, int amount) {
         if (modifiers.Contains(mod) && mod.level > 1)
         {
             mod.LevelDown(amount);
@@ -130,7 +130,7 @@ public class PlayerStats : Stats
     }
 
     //Retrieve every assigned modifier
-    public List<StatModifier> getModifiers() {
+    public List<StatModifier> GetModifiers() {
         return modifiers;
     }
 
@@ -159,7 +159,7 @@ public class PlayerStats : Stats
     }
 
     //Calculate the price for the stats currency
-    public float calculatePrice()
+    public float CalculatePrice()
     {
         //Current formular: basecCost + increaseCost * level * (level * 0.05)
         finalCost = Mathf.FloorToInt(baseCost + increaseCost * (level - 1) * (1 + (0.05f * (level - 1))));
@@ -169,13 +169,13 @@ public class PlayerStats : Stats
     //Qick way to calculate stuff by inserting methods
     public void calculateAll()
     {
-        sortModifier();
-        calculatePrice();
+        SortModifier();
+        CalculatePrice();
         CalculateFinal();
     }
 
     //Sort modifier based on Operant enum
-    void sortModifier()
+    void SortModifier()
     {
         modifiers = modifiers.OrderBy(o => o.operant).ToList();
     }

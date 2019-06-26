@@ -40,7 +40,7 @@ public class Highlightblock : MonoBehaviour
         }
     }
 
-    public void startHighlight()
+    public void StartHighlight()
     {
         currentTime = 1;
         isActive = true;

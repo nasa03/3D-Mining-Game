@@ -12,10 +12,10 @@ public class BlockEffectParticle : MonoBehaviour
 
     void Awake()
     {
-        initiateSpecial(GetComponent<Block>().blockinfo.blockname);
+        InitiateSpecial(GetComponent<Block>().blockinfo.blockname);
     }
 
-    private void initiateSpecial(string blockname)
+    private void InitiateSpecial(string blockname)
     {
         switch (blockname)
         {

@@ -39,7 +39,7 @@ public class MenuUI : MonoBehaviour
 
     }
 
-    public void navigateOnClick(GameObject content) {
+    public void NavigateOnClick(GameObject content) {
         for (int i = 0; i< menuContents.Length; i++) {
             menuContents[i].gameObject.SetActive(false);
         }
@@ -50,7 +50,7 @@ public class MenuUI : MonoBehaviour
         AudioManager.main.Play("UI_Click", Random.Range(0.75f, 1.5f), gameObject, true);
     }
 
-    public void onButtonHover(GameObject go)
+    public void OnButtonHover(GameObject go)
     {
         AudioManager.main.Play("UI_Hover", Random.Range(0.75f, 1.25f), go, true);
     }

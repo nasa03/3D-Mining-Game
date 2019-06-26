@@ -93,7 +93,7 @@ namespace Console
 
         public override void RunCommand(string[] args)
         {
-            Gamemanager.main.player.createBomb();
+            Gamemanager.main.player.CreateBomb();
         }
     }
     public class CommandModifier : ConsoleCommand
@@ -173,7 +173,7 @@ namespace Console
 
         public override void RunCommand(string[] args)
         {
-            Gamemanager.main.player.giveCash(int.Parse(args[1]));
+            Gamemanager.main.player.GiveCash(int.Parse(args[1]));
         }
     }
 }

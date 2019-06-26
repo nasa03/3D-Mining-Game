@@ -27,12 +27,12 @@ public class UI_Inventory : MonoBehaviour
     {
         if (Inventory.main.isRefreshed)
         {
-            refreshInventoryUi();
+            RefreshInventoryUi();
             Inventory.main.isRefreshed = false;
         }
     }
 
-    public void getInventoryInfo()
+    public void GetInventoryInfo()
     {
         currentBlockInfo = currentItem.blockinfo;
 
@@ -49,23 +49,23 @@ public class UI_Inventory : MonoBehaviour
 
     }
 
-    public void assignCurrentItem(int blockId)
+    public void AssignCurrentItem(int blockId)
     {
         GameObject currentButton = EventSystem.current.currentSelectedGameObject;
         currentItem = (BlockItem)Inventory.main.GetInventoryItem(blockId.ToString(), ItemType.Block);
         ui_sellAmount.text = "1";
-        getInventoryInfo();
-        refreshInventoryUi();
+        GetInventoryInfo();
+        RefreshInventoryUi();
     }
 
-    void refreshInventoryUi()
+    void RefreshInventoryUi()
     {
         bool isHidden = false;
         int availableItems = 0;
 
         for (int i = 0; i < Inventory.main.inventoryList.Count; i++)
         {
-            isHidden = hideButtonUi(invButtons[i], Inventory.main.inventoryList[i].isEmpty);
+            isHidden = HideButtonUi(invButtons[i], Inventory.main.inventoryList[i].isEmpty);
             
             if(!isHidden)
             {
@@ -79,21 +79,21 @@ public class UI_Inventory : MonoBehaviour
         invContentPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 20 * availableItems);
     }
 
-    bool deleteButtonUi(GameObject button)
+    bool DeleteButtonUi(GameObject button)
     {
         invButtons.Remove(button);
         Destroy(button);
         return true;
     }
 
-    bool hideButtonUi(GameObject button, bool hideButton)
+    bool HideButtonUi(GameObject button, bool hideButton)
     {
         //invButtons.Remove(button);
         button.SetActive(!hideButton);
         return hideButton;
     }
 
-    public void sellItem()
+    public void SellItem()
     {
         if (currentItem != null || currentItem.amount > 0)
         {
@@ -109,7 +109,7 @@ public class UI_Inventory : MonoBehaviour
             currentItem = null;
             return;
         }
-        refreshInventoryUi();
-        getInventoryInfo();
+        RefreshInventoryUi();
+        GetInventoryInfo();
     }
 }

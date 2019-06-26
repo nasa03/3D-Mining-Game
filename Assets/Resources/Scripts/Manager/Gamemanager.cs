@@ -48,7 +48,7 @@ public class Gamemanager : MonoBehaviour
 
     private void Start()
     {
-        refreshBlockList((int)player.transform.position.y);
+        RefreshBlockList((int)player.transform.position.y);
         for (int i = 0; i < blocksFromLayer.Count; i++)
         {
             weight += (float)blocksFromLayer.ElementAt(i).Value;
@@ -151,7 +151,7 @@ public class Gamemanager : MonoBehaviour
         return spawnedBlock;
     }
 
-    public void refreshBlockList(int playerCurrentLayer)
+    public void RefreshBlockList(int playerCurrentLayer)
     {
 
         blocksFromLayer.Clear();
@@ -194,7 +194,7 @@ public class Gamemanager : MonoBehaviour
     }
 
     /* This replaces the previous block to a newer block*/
-    public void replaceBlock(GameObject passedBlock, string name)
+    public void ReplaceBlock(GameObject passedBlock, string name)
     {
         foreach (BlockInfo block in availableBlocks)
         {
@@ -230,7 +230,7 @@ public class Gamemanager : MonoBehaviour
         return availableBlocks[0];
     } */
 
-    public BlockInfo getBlock(int id)
+    public BlockInfo GetBlock(int id)
     {
         if(availableBlocks[id].blockname == null)
         {
@@ -239,7 +239,7 @@ public class Gamemanager : MonoBehaviour
         return availableBlocks[id];
     }
 
-    public BlockInfo getBlock(string name)
+    public BlockInfo GetBlock(string name)
     {
         foreach (BlockInfo block in availableBlocks)
         {
@@ -249,27 +249,27 @@ public class Gamemanager : MonoBehaviour
         return availableBlocks[0];
     }
 
-    public BlockInfo[] getAllBlocks()
+    public BlockInfo[] GetAllBlocks()
     {
         return availableBlocks.ToArray();
     }
 
-    public int getAvailableOresCount()
+    public int GetAvailableOresCount()
     {
         return availableBlocks.Length;
     }
 
-    public void option_enableAutoClick()
+    public void Option_EnableAutoClick()
     {
         option_AutoClick = !option_AutoClick;
     }
 
-    public void option_enableAutoSell()
+    public void Option_EnableAutoSell()
     {
         option_AutoSell = !option_AutoSell;
     }
 
-    public void option_enableShowTopUI()
+    public void Option_EnableShowTopUI()
     {
         option_ShowTopUI = !option_ShowTopUI;
         GameUITop.main.ToggleTopUI(option_ShowTopUI);
@@ -287,7 +287,7 @@ public class Gamemanager : MonoBehaviour
             return;
         } */
 
-        Gamemanager.main.refreshBlockList((int)block.transform.position.y);
+        Gamemanager.main.RefreshBlockList((int)block.transform.position.y);
         //TODO Autodetect Intersect before its been created
         SpawnBlockByLayer(Vector3.left + position);
         SpawnBlockByLayer(Vector3.up + position);

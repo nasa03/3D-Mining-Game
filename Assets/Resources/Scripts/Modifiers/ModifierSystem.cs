@@ -157,7 +157,7 @@ public class ModifierSystem : MonoBehaviour
         }
 
         //Debug.Log(currentModifiers[modifierName].level + " - " + (amount - currentModifiers[modifierName].level));
-        Gamemanager.main.player.stats[statType].addModifier(currentModifiers[modifierName], amount);
+        Gamemanager.main.player.stats[statType].AddModifier(currentModifiers[modifierName], amount);
         currentModifiers[modifierName].assignedStat = statType;
         //currentModifiers[modifierName].assignModifierId(modifierName);
     }

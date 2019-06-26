@@ -43,19 +43,9 @@ public class PlayerScript : MonoBehaviour {
     Ray ray;
     RaycastHit hit;
 
-    private double _cash;
-    public double cash
-    {
-        get { return _cash; }
-        set { _cash = value; }
-    }
+    public double cash { get; set; }
 
-    private bool _playerControl;
-    public bool playerControl
-    {
-        get { return _playerControl; }
-        set { _playerControl = value; }
-    }
+    public bool playerControl { get; set; }
 
     public Dictionary<string, PlayerStats> stats = new Dictionary<string, PlayerStats>();
 
@@ -66,7 +56,7 @@ public class PlayerScript : MonoBehaviour {
         if (!SaveScript.isReset)
         {
             cash = double.Parse(SaveScript.savedData["CurrencyCash"].ToString());
-            applyPlayerStats((int)SaveScript.savedData["PlayerDamage"],
+            ApplyPlayerStats((int)SaveScript.savedData["PlayerDamage"],
                 (int)SaveScript.savedData["PlayerSpeed"],
                 (int)SaveScript.savedData["PlayerReach"],
                 (int)SaveScript.savedData["PlayerCritChance"],
@@ -78,7 +68,7 @@ public class PlayerScript : MonoBehaviour {
         }
         else
         {
-            applyPlayerStats(1,1,1,1,1,1,1);
+            ApplyPlayerStats(1,1,1,1,1,1,1);
             xp = new XPSystem(1, 1, 15, 1.15f);
             cash = 0;
 
@@ -91,7 +81,7 @@ public class PlayerScript : MonoBehaviour {
         //cash = 1000000000;
     }
 
-    void applyPlayerStats(int damage, int speed, int reach, int critChance, int critDMG, int luck, int jetForce)
+    void ApplyPlayerStats(int damage, int speed, int reach, int critChance, int critDMG, int luck, int jetForce)
     {
         stats.Add("damage", new PlayerStats("Damage", "", 1, 1, damage, 1000, 15, 6));
         stats.Add("speed", new PlayerStats("Speed", "s", 1, -0.01f, speed, 51, 40, 35));
@@ -106,12 +96,12 @@ public class PlayerScript : MonoBehaviour {
 
     void Update()
     {
-        userInputs();
-        onBlockRaycast();
+        UserInputs();
+        OnBlockRaycast();
        
     }
 
-    void onBlockRaycast()
+    void OnBlockRaycast()
     {
         
         ray = camera.ScreenPointToRay(Input.mousePosition);
@@ -141,7 +131,7 @@ public class PlayerScript : MonoBehaviour {
         }
     }
 
-    void userInputs()
+    void UserInputs()
     {
         if (isClicking)
         { 
@@ -155,7 +145,7 @@ public class PlayerScript : MonoBehaviour {
 
         if (!isClicking && autoClickEnabled && Gamemanager.main.option_AutoClick)
         {
-            hitBlock();
+            HitBlock();
             isClicking = true;
         }
 
@@ -187,7 +177,7 @@ public class PlayerScript : MonoBehaviour {
             if (!isClicking)
             {
                 isClicking = true;
-                hitBlock();
+                HitBlock();
             }
             else
             {
@@ -198,7 +188,7 @@ public class PlayerScript : MonoBehaviour {
         ToggleFlashLight(Input.GetKeyDown(KeyCode.Q));
     }
 
-    public void createBomb()
+    public void CreateBomb()
     {
         GameObject bomb = Instantiate(Resources.Load("Prefab/Bomb")) as GameObject;
         bomb.transform.position = transform.position;
@@ -207,14 +197,19 @@ public class PlayerScript : MonoBehaviour {
         bomb.GetComponent<Explode>().speed = 0.00001f;
     }
 
-    void hitBlock()
+    void HitBlock()
     {
         if (selectedBlock != null)
         {
             if (selectedBlock.transform.tag == "Block")
             {
-                highlightBlock.transform.position = selectedBlock.transform.position;
-                highlightBlock.startHighlight();
+
+                if (highlightBlock != null)
+                {
+                    highlightBlock.transform.position = selectedBlock.transform.position;
+                    highlightBlock.StartHighlight();
+                }
+
                 bool isCritHit = CriticalHit(stats["critical_chance"].finalValue);
 
                 if(isCritHit)
@@ -246,7 +241,7 @@ public class PlayerScript : MonoBehaviour {
         return false;
     }
 
-    public void giveCash(double amount)
+    public void GiveCash(double amount)
     {
         if(amount == 0)
             return;

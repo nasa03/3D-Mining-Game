@@ -28,7 +28,7 @@ namespace BuffEffect {
         {
             double cash = Random.Range(30 , 250) * int.Parse(args[0]);
 
-            Gamemanager.main.player.giveCash(cash);
+            Gamemanager.main.player.GiveCash(cash);
             Debug.Log("Got " + cash + " from Crate");
         }
     }

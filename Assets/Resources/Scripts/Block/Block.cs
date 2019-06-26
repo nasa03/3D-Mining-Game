@@ -12,11 +12,11 @@ public class Block : MonoBehaviour {
     public MaterialPropertyBlock blockColor;
 
 	// Init
-        void Start () {
-        	blockRenderer = GetComponent<Renderer>();
-        	blockColor = new MaterialPropertyBlock();
-        	ApplyBlockInfo();
-    	}
+    void Start () {
+      	blockRenderer = GetComponent<Renderer>();
+       	blockColor = new MaterialPropertyBlock();
+       	ApplyBlockInfo();
+    }
 
     // Check if other blocks are intersecting. If it does, delete this block.
 	void Awake () {
@@ -81,7 +81,7 @@ public class Block : MonoBehaviour {
         {
             if (Gamemanager.main.option_AutoSell)
             {
-                Gamemanager.main.player.giveCash(blockinfo.cash);
+                Gamemanager.main.player.GiveCash(blockinfo.cash);
             }
             else
                 Inventory.main.AddInventory(blockinfo.id.ToString(), 1, ItemType.Block);
@@ -102,7 +102,7 @@ public class Block : MonoBehaviour {
         Gamemanager.main.player.xp.GiveXP(blockinfo.xp);
         //partic.GetComponent<ParticleSystem>().startColor = new Color(this.color.r, this.color.g, this.color.b, 1);
 
-        Gamemanager.main.replaceBlock(gameObject, "Air");
+        Gamemanager.main.ReplaceBlock(gameObject, "Air");
         ApplyBlockInfo();
         Gamemanager.main.BlockisMined(this.gameObject);
         gameObject.tag = "Air";

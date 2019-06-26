@@ -14,7 +14,7 @@ public class Blockmanager : MonoBehaviour {
     //TODO Block Prefab
     void CreateRoom(Vector3 positionToSpawn, bool isPlayerSpawn)
     {
-        Gamemanager.main.refreshBlockList((int)positionToSpawn.y);
+        Gamemanager.main.RefreshBlockList((int)positionToSpawn.y);
         Gamemanager.main.SpawnBlockByLayer(new Vector3(0.0f, 0.0f, 0.0f) + positionToSpawn);
         Gamemanager.main.SpawnBlockByLayer(new Vector3(-1.0f, 0.0f, 0.0f) + positionToSpawn);
         Gamemanager.main.SpawnBlockByLayer(new Vector3(-2.0f, 0.0f, 0.0f) + positionToSpawn);

@@ -68,7 +68,7 @@ public class BlockItem : InventoryItem
 
     public BlockItem(int blockId, double amount)
     {
-        blockinfo = Gamemanager.main.getBlock(blockId);
+        blockinfo = Gamemanager.main.GetBlock(blockId);
         this.blockId = blockId;
         baseCash = blockinfo.cash;
         this.amount = amount;
@@ -140,7 +140,7 @@ public class Inventory : MonoBehaviour {
     {
         double cash = item.SellItem(amount, 1);
         RefreshInventory();
-        Gamemanager.main.player.giveCash(cash);
+        Gamemanager.main.player.GiveCash(cash);
     }
 
     public void UseItem(InventoryItem item, double amount)
@@ -228,7 +228,7 @@ public class Inventory : MonoBehaviour {
         GameObject obj = Instantiate(ui_inv.invItemPrefab) as GameObject;
         obj.transform.SetParent(ui_inv.invContentPanel.transform, false);
         obj.GetComponentInChildren<Text>().text = item.itemName.ToString();
-        obj.GetComponent<Button>().onClick.AddListener(() => ui_inv.assignCurrentItem(item.blockId));
+        obj.GetComponent<Button>().onClick.AddListener(() => ui_inv.AssignCurrentItem(item.blockId));
         ui_inv.invButtons.Add(obj);
     }
 }
