@@ -6,18 +6,32 @@ using UnityEngine.UI;
 
 public class MenuUI : MonoBehaviour
 {
-    public GameObject menuPanel;
-    public GameObject[] menuContents;
-    public GameObject menuTitle;
-    public GameObject hoverBox;
-    public GameObject scrollContent;
-    // Use this for initialization
+    [SerializeField]
+    private GameObject menuPanel;
+    [SerializeField]
+    private GameObject menuTitle;
+    [SerializeField]
+    private GameObject hoverBox;
+    [SerializeField]
+    private GameObject scrollContent;
+
+    [SerializeField]
+    private GameObject buttonPanel, contentPanel;
+
+    private List<GameObject> menuBottons;
+    private List<GameObject> menuContents;
+
+    private void Awake()
+    {
+        
+    }
+
     void Start()
     {
         menuPanel.SetActive(false);
+        InitButtons();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -39,10 +53,51 @@ public class MenuUI : MonoBehaviour
 
     }
 
-    public void NavigateOnClick(GameObject content) {
-        for (int i = 0; i< menuContents.Length; i++) {
-            menuContents[i].gameObject.SetActive(false);
+    // Initializes the buttons
+    private void InitButtons()
+    {
+        menuBottons = new List<GameObject>();
+        menuContents = new List<GameObject>();
+
+        AddNavigationOnButton("Upgrade");
+        AddNavigationOnButton("Inventory");
+        AddNavigationOnButton("Shop");
+        AddNavigationOnButton("Perks");
+        AddNavigationOnButton("Dimensions");
+        AddNavigationOnButton("Stats");
+        AddNavigationOnButton("Options");
+    }
+
+    // Assign the navigation and other Events to the button
+    private void AddNavigationOnButton(string buttonName)
+    {
+        GameObject currentButton = buttonPanel.transform.Find("Button_" + buttonName).gameObject;
+        GameObject currentContent = contentPanel.transform.Find("Content_" + buttonName).gameObject;
+
+        //Check if button has the component "Button"
+        if (!currentButton.GetComponent<Button>())
+        {
+            currentButton.AddComponent<Button>();
         }
+        currentButton.GetComponent<Button>().onClick.AddListener(() => NavigateOnClick(currentContent));
+
+        //Check if button has the component "EventTrigger"
+        if (!currentButton.GetComponent<EventTrigger>())
+        {
+            currentButton.AddComponent<EventTrigger>();
+        }
+        currentButton.GetComponent<EventTrigger>().AddListener(EventTriggerType.PointerEnter, (EventHandle) => OnButtonHover(currentButton));
+
+        menuBottons.Add(currentButton);
+        menuContents.Add(currentContent);
+
+        Debug.Log(currentButton + " " + currentContent);
+    }
+
+    public void NavigateOnClick(GameObject content) {
+        for (int i = 0; i< menuContents.Count; i++) {
+            menuContents[i].gameObject.SetActive(false);
+        } 
         //
         scrollContent.GetComponent<RectTransform>().sizeDelta = new Vector2(0, -(350 - content.GetComponent<RectTransform>().sizeDelta.y));
         menuTitle.GetComponentInChildren<Text>().text = EventSystem.current.currentSelectedGameObject.GetComponentInChildren<Text>().text;
