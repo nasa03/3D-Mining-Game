@@ -12,11 +12,11 @@ public class Block : MonoBehaviour {
     public MaterialPropertyBlock blockColor;
 
 	// Init
-	void Start () {
-        blockRenderer = GetComponent<Renderer>();
-        blockColor = new MaterialPropertyBlock();
-        ApplyBlockInfo();
-    }
+        void Start () {
+        	blockRenderer = GetComponent<Renderer>();
+        	blockColor = new MaterialPropertyBlock();
+        	ApplyBlockInfo();
+    	}
 
     // Check if other blocks are intersecting. If it does, delete this block.
 	void Awake () {
@@ -57,8 +57,21 @@ public class Block : MonoBehaviour {
 			gameObject.layer = 2;
 		}
     }
+	
+    // Block gets damaged
+    public void HurtBlock(float damage)
+    {
+        if (blockinfo.unBreakable)
+            return;
 
-    //Method. Block gets mined
+        AudioManager.main.Play("Block_Hit", UnityEngine.Random.Range(0.75f, 1.5f),gameObject,false);
+        blockinfo.health -= damage;
+
+        if (blockinfo.health <= 0)
+            MineBlock();
+    }
+
+    //Block gets mined
     public void MineBlock()
     {
         GameObject partic = Instantiate(Resources.Load("Prefab/BlockDestroyParticle"), transform.position, Quaternion.identity) as GameObject;
@@ -99,18 +112,5 @@ public class Block : MonoBehaviour {
 
         //Destroy script to save up RAM
         Destroy(this);
-    }
-
-    // Method. Block gets damaged
-    public void HurtBlock(float damage)
-    {
-        if (blockinfo.unBreakable)
-            return;
-
-        AudioManager.main.Play("Block_Hit", UnityEngine.Random.Range(0.75f, 1.5f),gameObject,false);
-        blockinfo.health -= damage;
-
-        if (blockinfo.health <= 0)
-            MineBlock();
     }
 }
