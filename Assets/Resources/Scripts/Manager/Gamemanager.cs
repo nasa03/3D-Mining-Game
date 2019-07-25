@@ -121,27 +121,10 @@ public class Gamemanager : MonoBehaviour
     */
     public GameObject SpawnBlock(int blockId, Vector3 whereToSpawn)
     {
-               /* BlockInfo blockinfo = new BlockInfo(
-                     block.id,
-                     block.name,
-                     block.health,
-                     block.cash,
-                     block.xp,
-                     block.color,
-                     block.material,
-                     block.isInvisible,
-                     block.unBreakable,
-                     block.isOre,
-                     block.isInteractable,
-                     block.hasMineEffect,
-                     block.disablePickup
-                    ); */
-
-                Block blockObject = blockPrefab.GetComponent<Block>();
-
-                //blockObject.blockinfo = new BlockInfo();
-                blockObject.blockinfo = availableBlocks[blockId];
-                spawnedBlock = Instantiate(blockPrefab, whereToSpawn, Quaternion.identity) as GameObject;
+        Block blockObject = blockPrefab.GetComponent<Block>();
+        blockObject.blockinfo = availableBlocks[blockId];
+	
+        spawnedBlock = Instantiate(blockPrefab, whereToSpawn, Quaternion.identity) as GameObject;
 
         if (spawnedBlock == null)
         {
@@ -193,29 +176,15 @@ public class Gamemanager : MonoBehaviour
         return spawnedBlock;
     }
 
-    /* This replaces the previous block to a newer block*/
+    /* This replaces the current block to a different block*/
     public void ReplaceBlock(GameObject passedBlock, string name)
     {
         foreach (BlockInfo block in availableBlocks)
         {
-            if (name == block.blockname)
+            if (name.Equals(block.blockname))
             {
                 Block replacedBlock = passedBlock.GetComponent<Block>();
                 replacedBlock.blockinfo = block;
-                /*Block replacedBlock = block.GetComponent<Block>();
-                replacedBlock.blockname = _block.name;
-                replacedBlock.health = _block.health;
-                replacedBlock.color = _block.color;
-                replacedBlock.isInvisible = _block.isInvisible;
-                replacedBlock.baseCash = _block.baseCash;
-                replacedBlock.material = _block.material;
-                replacedBlock.unBreakable = _block.unBreakable;
-                replacedBlock.isInteractable = _block.isInteractable;
-                replacedBlock.hasMineEffect = _block.hasMineEffect;
-                replacedBlock.disablePickup = _block.disablePickup;
-                replacedBlock.xp = _block.xp;
-                replacedBlock.isOre = _block.isOre;
-                replacedBlock.ApplyBlockInfo(); */
             }
         }
     }
