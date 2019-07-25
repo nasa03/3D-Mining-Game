@@ -114,26 +114,33 @@ public class Inventory : MonoBehaviour {
     }
 
     // Add item to the inventory. Increase it's amount if it already exists
-    public void AddInventory(string itemName, double amount, ItemType itemType)
+    public InventoryItem AddInventory(string itemName, double amount, ItemType itemType)
     {
-        // Check if Item already exists
+        // Fetch Item from the Inventory
         InventoryItem item = GetInventoryItem(itemName, itemType);
-        if(item != null)
+
+        // Check if that Item exist
+        if (item == null)
+        {
+            switch (itemType)
+            {
+                case ItemType.Block:
+                    item = new BlockItem(int.Parse(itemName), amount);
+                    FetchToBlockInventoryUi(item as BlockItem);
+                    break;
+            }
+
+            inventoryList.Add(item);
+            
+        }
+        else
         {
             item.amount += amount;
-            RefreshInventory();
-            return;
         }
 
-        switch(itemType)
-        {
-            case ItemType.Block:
-                item = new BlockItem(int.Parse(itemName), amount);
-                FetchToBlockInventoryUi(item as BlockItem);
-                break;
-        }
-        inventoryList.Add(item);
         RefreshInventory();
+
+        return item;
     }
 
     public void SellItem(InventoryItem item, double amount)

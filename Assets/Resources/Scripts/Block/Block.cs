@@ -79,12 +79,14 @@ public class Block : MonoBehaviour {
         // If Block Pickup is enabled
         if (!blockinfo.disablePickup)
         {
+
+            InventoryItem item = Inventory.main.AddInventory(blockinfo.id.ToString(), 1, ItemType.Block);
+
             if (Gamemanager.main.option_AutoSell)
             {
-                Gamemanager.main.player.GiveCash(blockinfo.cash);
+                Inventory.main.SellItem(item, 1);
             }
-            else
-                Inventory.main.AddInventory(blockinfo.id.ToString(), 1, ItemType.Block);
+                
         }
 
         // Apply Block Effect if it has an Use effect
