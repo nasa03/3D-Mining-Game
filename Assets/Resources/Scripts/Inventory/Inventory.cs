@@ -152,7 +152,12 @@ public class Inventory : MonoBehaviour {
 
     public void UseItem(InventoryItem item, double amount)
     {
-        amount = item.amount - amount;
+        item.amount -= amount;
+        if(item.amount < 0)
+        {
+            item.amount = 0;
+        }
+
         if (amount != 0) { 
             for (int i = 0; i<amount; i++) {
                 item.UseItem();

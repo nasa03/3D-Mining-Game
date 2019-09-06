@@ -88,7 +88,6 @@ public class UI_Inventory : MonoBehaviour
 
     bool HideButtonUi(GameObject button, bool hideButton)
     {
-        //invButtons.Remove(button);
         button.SetActive(!hideButton);
         return hideButton;
     }
