@@ -60,15 +60,15 @@ public class InitScript
         return availableDimensions;
     }
 
-    BlockInfo writeBlock(JsonData info)
+    private BlockInfo writeBlock(JsonData info)
     {
         BlockInfo _block = new BlockInfo();
         _block.id = (int)info["id"];
         _block.blockname = info["name"].ToString();
         _block.desc = info["desc"].ToString();
-        _block.health = (double)info["health"] / 10;
+        _block.health = (double)info["health"];
         _block.color = new Color32((byte)info["colorRed"], (byte)info["colorGreen"], (byte)info["colorBlue"], 255);
-        _block.cash = (double)info["cash"] / 10;
+        _block.cash = (double)info["cash"];
         _block.xp = (int)info["xp"];
         _block.material = Resources.Load("material/" + info["material"]) as Material;
         if(info["texture"].ToString() != "none")
@@ -125,7 +125,7 @@ public class InitScript
 
     }
 
-    Dimension writeDimension(JsonData info)
+    private Dimension writeDimension(JsonData info)
     {
         Dimension jsonDimension = new Dimension(
             (int)info["id"],
@@ -146,7 +146,7 @@ public class InitScript
             {
                 jsonDimension.layers[i].blocks[o] = new LayerBlock(
                     (int)info["layers"][i]["blocks"][o]["block"],
-                    (double)info["layers"][i]["blocks"][o]["appearance"] / 10,
+                    (double)info["layers"][i]["blocks"][o]["appearance"],
                     (bool)info["layers"][i]["blocks"][o]["ignoreLuck"]
                     );
             }
