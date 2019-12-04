@@ -18,23 +18,6 @@ public class Block : MonoBehaviour {
        	ApplyBlockInfo();
     }
 
-    // Check if other blocks are intersecting. If it does, delete this block.
-	void Awake () {
-		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 0.1f);
-		
-		for(int i = 0; i<hitColliders.Length; i++)
-		{
-            if (hitColliders[i].transform.root != transform)
-			{
-				if(hitColliders[i].bounds.Intersects(gameObject.GetComponent<Renderer>().bounds))
-				{
-                    //Debug.Log("Intersecting with " + hitColliders[i].GetComponent<Block>().blockname);
-					Destroy(gameObject);
-				}
-			}
-		}
-	}
-
     // Assign properties to block
 	public void ApplyBlockInfo()
 	{

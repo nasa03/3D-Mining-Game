@@ -119,12 +119,19 @@ public class Gamemanager : MonoBehaviour
     /*
      This manages the way blocks are spawned.     
     */
-    public GameObject SpawnBlock(int blockId, Vector3 whereToSpawn)
+    public GameObject SpawnBlock(int blockId, Vector3 pos)
     {
+        // Check if given position doesn't contain a block
+        Collider[] hitCollider = Physics.OverlapSphere(pos, 0.1f);
+        if(hitCollider.Length > 0)
+        {
+            return null;
+        }
+
         Block blockObject = blockPrefab.GetComponent<Block>();
         blockObject.blockinfo = availableBlocks[blockId];
 	
-        spawnedBlock = Instantiate(blockPrefab, whereToSpawn, Quaternion.identity) as GameObject;
+        spawnedBlock = Instantiate(blockPrefab, pos, Quaternion.identity) as GameObject;
 
         if (spawnedBlock == null)
         {
