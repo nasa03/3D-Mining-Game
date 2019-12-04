@@ -68,7 +68,7 @@ public class BlockItem : InventoryItem
 
     public BlockItem(int blockId, double amount)
     {
-        blockinfo = Gamemanager.main.GetBlock(blockId);
+        blockinfo = Blockmanager.main.GetBlock(blockId);
         this.blockId = blockId;
         baseCash = blockinfo.cash;
         this.amount = amount;

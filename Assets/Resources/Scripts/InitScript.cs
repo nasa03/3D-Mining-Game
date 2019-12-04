@@ -9,11 +9,6 @@ public class InitScript
 {
     JsonData blockJson;
 
-    void Start()
-    {
-        readBlocks();
-    }
-
     public BlockInfo[] readBlocks()
     {
         BlockInfo[] availableBlocks = new BlockInfo[128];

@@ -87,9 +87,9 @@ public class Block : MonoBehaviour {
         Gamemanager.main.player.xp.GiveXP(blockinfo.xp);
         //partic.GetComponent<ParticleSystem>().startColor = new Color(this.color.r, this.color.g, this.color.b, 1);
 
-        Gamemanager.main.ReplaceBlock(gameObject, "Air");
+        Blockmanager.main.ReplaceBlock(gameObject, "Air");
         ApplyBlockInfo();
-        Gamemanager.main.BlockisMined(this.gameObject);
+        Blockmanager.main.BlockisMined(this.gameObject);
         gameObject.tag = "Air";
 
         //Destroy Renderer to save up RAM
