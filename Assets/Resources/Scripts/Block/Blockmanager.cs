@@ -39,7 +39,6 @@ public class Blockmanager : MonoBehaviour {
         dimension = init.readDimension();
         blockPrefab = Resources.Load("Prefab/BlockPrefab") as GameObject;
 
-        RefreshBlockList(-15);
         for (int i = 0; i < blocksFromLayer.Count; i++)
         {
             weight += (float)blocksFromLayer.ElementAt(i).Value;
@@ -47,6 +46,7 @@ public class Blockmanager : MonoBehaviour {
 
 
         currentDimension = dimension[0];
+        RefreshBlockList(-15);
         CreateRoom(new Vector3(0, 15, 0), true);
     }
 
@@ -76,6 +76,8 @@ public class Blockmanager : MonoBehaviour {
     {
 
         blocksFromLayer.Clear();
+
+        Debug.Log(currentDimension);
 
         currentLayer = currentDimension.getCurrentLayer(playerCurrentLayer);
         layerBlocks = currentDimension.getBlocksFromLayer(currentLayer);
