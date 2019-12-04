@@ -1,6 +1,5 @@
-# 3D-Mining-Game
+# 3D-Mining-Game (UNSTABLE)
 
-A project of mine that has been in development for a while. Inspired from the Blockland gamemode called "Unlimited Mining".
-In this game, you mine ores and upgrade your stats. The deeper you go, the more valuable ores you'll encounter.
+The Unstable branch is there to do big changes that might break the game completely, without screwing with the Master branch.
 
-This project is still under developement.
+If you want the game to be playable, switch to the Master branch.
