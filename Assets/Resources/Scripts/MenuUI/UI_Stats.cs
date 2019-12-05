@@ -7,17 +7,21 @@ using UnityEngine.UI;
 public class UI_Stats : MonoBehaviour
 {
     public Text statText;
+    PlayerScript localPlayer;
     // Start is called before the first frame update
     void Start()
     {
+
+        localPlayer = Gamemanager.main.getLocalPlayer();
+
         statText.text =
-            Gamemanager.main.player.stats["damage"].ToString() +
-            Gamemanager.main.player.stats["speed"].ToString() +
-            Gamemanager.main.player.stats["reach"].ToString() +
-            Gamemanager.main.player.stats["critical_chance"].ToString() +
-            Gamemanager.main.player.stats["critical_damage"].ToString() +
-            Gamemanager.main.player.stats["luck"].ToString() +
-            Gamemanager.main.player.stats["jetpack_force"].ToString();
+            localPlayer.stats["damage"].ToString() +
+            localPlayer.stats["speed"].ToString() +
+            localPlayer.stats["reach"].ToString() +
+            localPlayer.stats["critical_chance"].ToString() +
+            localPlayer.stats["critical_damage"].ToString() +
+            localPlayer.stats["luck"].ToString() +
+            localPlayer.stats["jetpack_force"].ToString();
     }
 
     // Update is called once per frame

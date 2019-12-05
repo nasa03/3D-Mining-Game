@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class MenuUI : MonoBehaviour
 {
+
+    PlayerScript localPlayer;
+
     [SerializeField]
     private GameObject menuPanel;
     [SerializeField]
@@ -28,6 +31,7 @@ public class MenuUI : MonoBehaviour
 
     void Start()
     {
+        localPlayer = Gamemanager.main.getLocalPlayer();
         menuPanel.SetActive(false);
         InitButtons();
     }
@@ -40,14 +44,14 @@ public class MenuUI : MonoBehaviour
         {
             menuPanel.SetActive(!menuPanel.activeSelf);
             Gamemanager.main.GetComponent<SaveScript>().Save();
-            Gamemanager.main.player.playerControl = !Gamemanager.main.player.playerControl;
+            localPlayer.playerControl = !localPlayer.playerControl;
             hoverBox.SetActive(false);
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && !Gamemanager.main.player.playerControl)
+        if (Input.GetKeyDown(KeyCode.Escape) && !localPlayer.playerControl)
         {
             menuPanel.SetActive(false);
             Gamemanager.main.GetComponent<SaveScript>().Save();
-            Gamemanager.main.player.playerControl = true;
+            localPlayer.playerControl = true;
             hoverBox.SetActive(false);
         }
 
@@ -124,7 +128,7 @@ public class MenuUI : MonoBehaviour
                 panels[i].SetActive(true);
                 continue;
             }
-            panels[i].SetActive(!Gamemanager.main.player.playerControl);
+            panels[i].SetActive(!player.playerControl);
         }
     } */
 }

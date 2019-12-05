@@ -30,7 +30,7 @@ public class DrillOverwatch : MonoBehaviour {
             {
                 text.text = "Press V";
             }
-            //durabText.text = Gamemanager.main.player.drillDurability.ToString();
+            //durabText.text = player.drillDurability.ToString();
             update = _update;
         }
     }

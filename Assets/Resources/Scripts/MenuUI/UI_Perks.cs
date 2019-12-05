@@ -13,6 +13,7 @@ public class UI_Perks : MonoBehaviour
     RectTransform perkPanelTransform;
     HoverBox hoverbox;
     Button perkButton;
+    PlayerScript player;
 
     int posX = -180;
     int posY = -70;
@@ -20,12 +21,13 @@ public class UI_Perks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = Gamemanager.main.getLocalPlayer();
         InitPerks();
     }
 
     private void Update()
     {
-        totalPerkPoints.text = "Perk Points: " + Gamemanager.main.player.xp.perkpoint;
+        totalPerkPoints.text = "Perk Points: " + player.xp.perkpoint;
     }
 
     void InitPerks()
@@ -37,7 +39,7 @@ public class UI_Perks : MonoBehaviour
             perkPanel = Instantiate(perkPrefab, transform.position, Quaternion.identity);
             perkPanel.transform.SetParent(gameObject.transform);
 
-            perkPanel.GetComponent<Button>().onClick.AddListener(() => perk.ConfirmBuyPerk(perkPanel));
+            perkPanel.GetComponent<Button>().onClick.AddListener(() => perk.ConfirmBuyPerk(Gamemanager.main.getLocalPlayer(), perkPanel));
             perkPanel.name = perk.id;
 
             perkPanelTransform = perkPanel.GetComponent<RectTransform>();

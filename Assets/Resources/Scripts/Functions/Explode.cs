@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
+// TODO:
+
 public class Explode : MonoBehaviour {
 
 	Collider[] explodeObject;
@@ -10,11 +12,12 @@ public class Explode : MonoBehaviour {
 	public bool ignoreOres;
 	float storeSpeed;
 	List<GameObject> arrayOfBlocks = new List<GameObject>();
+    PlayerScript player;
 
 	// Use this for initialization
 	void Start () {
 		storeSpeed = speed;
-
+        player = Gamemanager.main.getLocalPlayer(); // Change this to when Player triggers the bomb in the future
 	}
 	
 	// Update is called once per frame
@@ -27,17 +30,17 @@ public class Explode : MonoBehaviour {
 			FetchBlocks();
 			if(arrayOfBlocks.Count != 0)
 			{
-				arrayOfBlocks[0].GetComponent<Block>().MineBlock();
-                arrayOfBlocks[1].GetComponent<Block>().MineBlock();
-                arrayOfBlocks[2].GetComponent<Block>().MineBlock();
-                arrayOfBlocks[3].GetComponent<Block>().MineBlock();
-                arrayOfBlocks[4].GetComponent<Block>().MineBlock();
-                arrayOfBlocks[5].GetComponent<Block>().MineBlock();
-                arrayOfBlocks[6].GetComponent<Block>().MineBlock();
-                arrayOfBlocks[7].GetComponent<Block>().MineBlock();
-                arrayOfBlocks[8].GetComponent<Block>().MineBlock();
-                arrayOfBlocks[9].GetComponent<Block>().MineBlock();
-                arrayOfBlocks[10].GetComponent<Block>().MineBlock();
+				arrayOfBlocks[0].GetComponent<Block>().MineBlock(player);
+                arrayOfBlocks[1].GetComponent<Block>().MineBlock(player);
+                arrayOfBlocks[2].GetComponent<Block>().MineBlock(player);
+                arrayOfBlocks[3].GetComponent<Block>().MineBlock(player);
+                arrayOfBlocks[4].GetComponent<Block>().MineBlock(player);
+                arrayOfBlocks[5].GetComponent<Block>().MineBlock(player);
+                arrayOfBlocks[6].GetComponent<Block>().MineBlock(player);
+                arrayOfBlocks[7].GetComponent<Block>().MineBlock(player);
+                arrayOfBlocks[8].GetComponent<Block>().MineBlock(player);
+                arrayOfBlocks[9].GetComponent<Block>().MineBlock(player);
+                arrayOfBlocks[10].GetComponent<Block>().MineBlock(player);
             }
 		} 
 	}

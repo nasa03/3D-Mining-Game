@@ -27,7 +27,7 @@ public abstract class InventoryItem
         }
     }
 
-    public abstract void UseItem();
+    public abstract void UseItem(PlayerScript player);
 
     public double finalCash { get; private set; }
 
@@ -81,9 +81,9 @@ public class BlockItem : InventoryItem
         return blockinfo;
     }
 
-    public override void UseItem()
+    public override void UseItem(PlayerScript player)
     {
-        BuffManager.main.useBlockBuff(blockId);
+        BuffManager.main.useBlockBuff(player, blockId);
     }
 }
 
@@ -143,14 +143,14 @@ public class Inventory : MonoBehaviour {
         return item;
     }
 
-    public void SellItem(InventoryItem item, double amount)
+    public void SellItem(PlayerScript player, InventoryItem item, double amount)
     {
         double cash = item.SellItem(amount, 1);
         RefreshInventory();
-        Gamemanager.main.player.GiveCash(cash);
+        player.GiveCash(cash);
     }
 
-    public void UseItem(InventoryItem item, double amount)
+    public void UseItem(PlayerScript player, InventoryItem item, double amount)
     {
         item.amount -= amount;
         if(item.amount < 0)
@@ -160,7 +160,7 @@ public class Inventory : MonoBehaviour {
 
         if (amount != 0) { 
             for (int i = 0; i<amount; i++) {
-                item.UseItem();
+                item.UseItem(player);
             }
         }
         RefreshInventory();

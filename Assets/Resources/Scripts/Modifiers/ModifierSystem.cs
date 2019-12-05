@@ -66,25 +66,25 @@ public class StatModifier : Stats
         this.modifierId = modifierId;
     }
 
-    public void ChangeBaseValue(float amount)
+    public void ChangeBaseValue(PlayerScript player, float amount)
     {
         if(baseValue == amount)
         {
             return;
         }
         baseValue = amount;
-        Gamemanager.main.player.stats[assignedStat].CalculateFinal();
+        player.stats[assignedStat].CalculateFinal();
         CalculateFinal();
     }
 
-    public void ChangeStackValue(float amount)
+    public void ChangeStackValue(PlayerScript player, float amount)
     {
         if (stackValue == amount)
         {
             return;
         }
         stackValue = amount;
-        Gamemanager.main.player.stats[assignedStat].CalculateFinal();
+        player.stats[assignedStat].CalculateFinal();
         CalculateFinal();
     }
 
@@ -140,7 +140,7 @@ public class ModifierSystem : MonoBehaviour
         currentModifiers.Add("lava_debuff_speed", new StatModifier("Lava", "%", Operant.add, "speed", 0.8f, 5, 0.5f));
     }
 
-    public static void ApplyModifier(string statType, string modifierName, int amount)
+    public static void ApplyModifier(PlayerScript player, string statType, string modifierName, int amount)
     {
         statType = statType.ToLower();
 
@@ -150,25 +150,25 @@ public class ModifierSystem : MonoBehaviour
             return;
         }
 
-        if (!Gamemanager.main.player.stats.ContainsKey(statType))
+        if (!player.stats.ContainsKey(statType))
         {
             Debug.LogError("Player stat " + statType + " doesn't exist!");
             return;
         }
 
         //Debug.Log(currentModifiers[modifierName].level + " - " + (amount - currentModifiers[modifierName].level));
-        Gamemanager.main.player.stats[statType].AddModifier(currentModifiers[modifierName], amount);
+        player.stats[statType].AddModifier(currentModifiers[modifierName], amount);
         currentModifiers[modifierName].assignedStat = statType;
         //currentModifiers[modifierName].assignModifierId(modifierName);
     }
 
     void Update()
     {
-        if(Gamemanager.main.isTick) {
-            currentModifiers["perk_damage"].ChangeBaseValue(Gamemanager.main.player.xp.level * 0.01f);
-            currentModifiers["perk_damage"].ChangeStackValue(Gamemanager.main.player.xp.level * 0.005f);
-            
+        /*
+        if (Gamemanager.main.isTick) {
+            currentModifiers["perk_damage"].ChangeBaseValue(player.xp.level * 0.01f);
+            currentModifiers["perk_damage"].ChangeStackValue(player.xp.level * 0.005f);
+         */
             //Debug.Log(currentModifiers["perk_damage"].finalValue);
         }
     }
-}

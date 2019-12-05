@@ -34,7 +34,7 @@ namespace BuffEffect {
             }
                 //BuffManager.main.currentBuffEffects.Add(BuffEffectName, this);
         }
-        public abstract void applyBuff(string[] args);
+        public abstract void applyBuff(PlayerScript player, string[] args);
     }
 }
 
@@ -68,44 +68,44 @@ public class BuffManager : MonoBehaviour
     }
 
     //This will Trigger, once the player activates that block in the Inventory or Autosell is enabled.
-    public void useBlockBuff(int blockId)
+    public void useBlockBuff(PlayerScript player, int blockId)
     {
         switch(blockId)
         {
             //Crate-F to Crate-S++
             case 55:
-                crateEffect(1);
+                crateEffect(player, 1);
                 break;
             case 56:
-                crateEffect(2);
+                crateEffect(player, 2);
                 break;
             case 57:
-                crateEffect(3);
+                crateEffect(player, 3);
                 break;
             case 58:
-                crateEffect(4);
+                crateEffect(player, 4);
                 break;
             case 59:
-                crateEffect(5);
+                crateEffect(player, 5);
                 break;
             case 60:
-                crateEffect(6);
+                crateEffect(player, 6);
                 break;
             case 61:
-                crateEffect(7);
+                crateEffect(player, 7);
                 break;
             case 62:
-                crateEffect(8);
+                crateEffect(player, 8);
                 break;
             case 63:
-                crateEffect(9);
+                crateEffect(player, 9);
                 break;
 
         }
     }
 
     //This will Trigger once the blocks health reaches 0 and gets mined.
-    public void OnMinedBlock(int id)
+    public void OnMinedBlock(PlayerScript player, int id)
     {
         switch(id) {
 
@@ -114,22 +114,22 @@ public class BuffManager : MonoBehaviour
             case 17:
                     //W.i.P
                     //TODO: Implement BuffLava
-                    ApplyBuffByName(currentOnMinedBuffs, "BuffLava", new string[] { "checkIfPlayerHasRadsandStuff" });
+                    ApplyBuffByName(player, currentOnMinedBuffs, "BuffLava", new string[] { "checkIfPlayerHasRadsandStuff" });
             break;
         }
     }
 
     //Give Buff effect to player
-    private void ApplyBuffByName(Dictionary<string, BuffEffectClass> dict, string buffEffectName, string[] args)
+    private void ApplyBuffByName(PlayerScript player, Dictionary<string, BuffEffectClass> dict, string buffEffectName, string[] args)
     {
         if (dict.ContainsKey(buffEffectName))
         {
-            dict[buffEffectName].applyBuff(args);
+            dict[buffEffectName].applyBuff(player, args);
         }
     }
 
     //Crate Script 
-    public void crateEffect(int strenghtNumber)
+    public void crateEffect(PlayerScript player, int strenghtNumber)
     {
         float currentWeight = 0;
         float rng = Random.Range(0, maxCrateWeight);
@@ -138,8 +138,8 @@ public class BuffManager : MonoBehaviour
         {
             if(rng <= crate.Value.BuffEffectChance + currentWeight)
             {
-                crate.Value.applyBuff(new string[] { strenghtNumber.ToString() });
-                return;
+                crate.Value.applyBuff(player, new string[] { strenghtNumber.ToString() });
+                break;
             }
             currentWeight += crate.Value.BuffEffectChance;
         }

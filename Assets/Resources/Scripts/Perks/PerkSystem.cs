@@ -14,9 +14,9 @@ namespace Perks {
         public abstract bool isActive { get; protected set; }
         private GameObject panel;
 
-        protected abstract void ActivatePerk(int amount);
+        protected abstract void ActivatePerk(PlayerScript player, int amount);
 
-        public void LevelUp(int amount)
+        public void LevelUp(PlayerScript player, int amount)
         {
             if (maxLevel <= level)
                 level = maxLevel;
@@ -28,24 +28,24 @@ namespace Perks {
                 if(!PerkSystem.activePerks.Contains(this))
                     PerkSystem.activePerks.Add(this);
             }
-            ActivatePerk(amount);
+            ActivatePerk(player, amount);
         }
 
-        public void BuyPerk(int amount)
+        public void BuyPerk(PlayerScript player, int amount)
         {
-            if (Gamemanager.main.player.xp.perkpoint >= cost) { 
-                Gamemanager.main.player.xp.GivePerkPoint(-cost * amount);
-                LevelUp(amount);
+            if (player.xp.perkpoint >= cost) { 
+                player.xp.GivePerkPoint(-cost * amount);
+                LevelUp(player, amount);
             }
             panel.GetComponent<HoverBox>().setDisplay(ToString());
         }
 
-        public void ConfirmBuyPerk(GameObject panel)
+        public void ConfirmBuyPerk(PlayerScript player, GameObject panel)
         {
             this.panel = panel;
-            if (Gamemanager.main.player.xp.perkpoint >= cost)
+            if (player.xp.perkpoint >= cost)
             {
-                Gamemanager.main.dialogue.createDialogue("Are you sure you wanna buy " + name + "?", () => BuyPerk(1), null);
+                Gamemanager.main.dialogue.createDialogue("Are you sure you wanna buy " + name + "?", () => BuyPerk(player, 1), null);
             }
         }
 
@@ -82,9 +82,9 @@ namespace Perks {
             AddToList();
         }
 
-        protected override void ActivatePerk(int amount)
+        protected override void ActivatePerk(PlayerScript player, int amount)
         {
-            ModifierSystem.ApplyModifier("damage", "perk_damage", amount);
+            ModifierSystem.ApplyModifier(player, "damage", "perk_damage", amount);
         }
     }
 
@@ -109,9 +109,9 @@ namespace Perks {
             AddToList();
         }
 
-        protected override void ActivatePerk(int amount)
+        protected override void ActivatePerk(PlayerScript player, int amount)
         {
-            ModifierSystem.ApplyModifier("speed", "perk_speed", amount);
+            ModifierSystem.ApplyModifier(player, "speed", "perk_speed", amount);
         }
     }
     #endregion
@@ -136,9 +136,9 @@ namespace Perks {
             SpeedPerk speedPerk = new SpeedPerk();
         }
 
-        public static void AssignPerk(string id, int level)
+        public static void AssignPerk(PlayerScript player, string id, int level)
         {
-            currentPerks[id].LevelUp(level);
+            currentPerks[id].LevelUp(player, level);
         }
     }
 }

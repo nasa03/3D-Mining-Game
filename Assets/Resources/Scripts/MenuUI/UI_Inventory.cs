@@ -22,6 +22,13 @@ public class UI_Inventory : MonoBehaviour
 
     private BlockInfo currentBlockInfo;
 
+    private PlayerScript player;
+
+    private void Start()
+    {
+        player = Gamemanager.main.getLocalPlayer();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -98,10 +105,10 @@ public class UI_Inventory : MonoBehaviour
         {
             if (currentBlockInfo.isInteractable)
             {
-                Inventory.main.UseItem(currentItem, Mathf.Floor(Mathf.Abs(float.Parse(ui_sellAmount.text))));
+                Inventory.main.UseItem(player, currentItem, Mathf.Floor(Mathf.Abs(float.Parse(ui_sellAmount.text))));
             }
             else
-                Inventory.main.SellItem(currentItem, Mathf.Floor(Mathf.Abs(float.Parse(ui_sellAmount.text))));
+                Inventory.main.SellItem(player, currentItem, Mathf.Floor(Mathf.Abs(float.Parse(ui_sellAmount.text))));
         }
         else
         {

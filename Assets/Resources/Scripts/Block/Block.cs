@@ -42,7 +42,7 @@ public class Block : MonoBehaviour {
     }
 	
     // Block gets damaged
-    public void HurtBlock(float damage)
+    public void HurtBlock(PlayerScript player, float damage)
     {
         if (blockinfo.unBreakable)
             return;
@@ -51,11 +51,11 @@ public class Block : MonoBehaviour {
         blockinfo.health -= damage;
 
         if (blockinfo.health <= 0)
-            MineBlock();
+            MineBlock(player);
     }
 
     //Block gets mined
-    public void MineBlock()
+    public void MineBlock(PlayerScript player)
     {
         GameObject partic = Instantiate(Resources.Load("Prefab/BlockDestroyParticle"), transform.position, Quaternion.identity) as GameObject;
 
@@ -67,7 +67,7 @@ public class Block : MonoBehaviour {
 
             if (Gamemanager.main.option_AutoSell)
             {
-                Inventory.main.SellItem(item, 1);
+                Inventory.main.SellItem(player, item, 1);
             }
                 
         }
@@ -75,16 +75,16 @@ public class Block : MonoBehaviour {
         // Apply Block Effect if it has an Use effect
         if (blockinfo.isInteractable && Gamemanager.main.option_AutoSell)
         {
-            BuffManager.main.useBlockBuff(blockinfo.id);
+            BuffManager.main.useBlockBuff(player, blockinfo.id);
         }
 
         // Apply Block Effect if it has a Mine effect
         if (blockinfo.hasMineEffect)
         {
-            BuffManager.main.OnMinedBlock(blockinfo.id);
+            BuffManager.main.OnMinedBlock(player, blockinfo.id);
         }
 
-        Gamemanager.main.player.xp.GiveXP(blockinfo.xp);
+        player.xp.GiveXP(blockinfo.xp);
         //partic.GetComponent<ParticleSystem>().startColor = new Color(this.color.r, this.color.g, this.color.b, 1);
 
         Blockmanager.main.ReplaceBlock(gameObject, "Air");

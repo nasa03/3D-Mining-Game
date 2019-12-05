@@ -9,6 +9,7 @@ public class TopTextUI : MonoBehaviour
 {
     TextMeshProUGUI text;
     ColorChange colorchange;
+    PlayerScript player;
 
     public enum TextUIEnum { Cash, Xp}
     public TextUIEnum textUI;
@@ -19,9 +20,10 @@ public class TopTextUI : MonoBehaviour
     private double amountPerTick;
     private double _amountPerTick;
     private string UIText;
-    
+
     void Start()
     {
+        player = Gamemanager.main.getLocalPlayer();
         text = GetComponent<TextMeshProUGUI>();
         text.text = TextFormat(textUI);
         UIValue = carriedValue;
@@ -73,12 +75,12 @@ public class TopTextUI : MonoBehaviour
         switch (textUI)
         {
             case TextUIEnum.Cash:
-                carriedValue = Gamemanager.main.player.cash;
+                carriedValue = player.cash;
                 return "$ " + GameFormat.toScientificNotation(UIValue);
 
             case TextUIEnum.Xp:
-                carriedValue = Gamemanager.main.player.xp.currentXP;
-                return "XP: " + GameFormat.toScientificNotation(UIValue) + "/" + GameFormat.toScientificNotation(Gamemanager.main.player.xp.nextXP);
+                carriedValue = player.xp.currentXP;
+                return "XP: " + GameFormat.toScientificNotation(UIValue) + "/" + GameFormat.toScientificNotation(player.xp.nextXP);
         }
         return "";
     }

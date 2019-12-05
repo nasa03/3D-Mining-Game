@@ -4,30 +4,6 @@ using System.Collections.Generic;
 
 public class PlayerScript : MonoBehaviour {
 
-
-    /*
-    private float _drillDurability;
-    public float drillDurability
-    {
-        get { return _drillDurability; }
-        set { _drillDurability = value; }
-    }
-
-    private int _drillLevel;
-    public int drillLevel
-    {
-        get { return _drillLevel; }
-        set { _drillLevel = value; }
-    } 
-
-    public float addDrillDurability(float value)
-    {
-        drillDurability += value;
-        GameObject.Find("DrillUI").GetComponent<DrillOverwatch>().text.text = drillDurability.ToString();
-        return value;
-    }  
-         */
-
     MessageSystem message;
     private float speedStore;
     public GameObject selectedBlock, pointer;
@@ -55,6 +31,7 @@ public class PlayerScript : MonoBehaviour {
         
         if (!SaveScript.isReset)
         {
+            Debug.Log(double.Parse(SaveScript.savedData["CurrencyCash"].ToString()));
             cash = double.Parse(SaveScript.savedData["CurrencyCash"].ToString());
             ApplyPlayerStats((int)SaveScript.savedData["PlayerDamage"],
                 (int)SaveScript.savedData["PlayerSpeed"],
@@ -218,7 +195,7 @@ public class PlayerScript : MonoBehaviour {
                 }
 
                 //Instantiate(hitPart, selectedBlock.transform.position, Quaternion.Inverse(transform.GetComponentInChildren<Camera>().transform.rotation));
-                selectedBlock.GetComponent<Block>().HurtBlock(stats["damage"].finalValue * (isCritHit ? stats["critical_damage"].finalValue : 1));
+                selectedBlock.GetComponent<Block>().HurtBlock(this, stats["damage"].finalValue * (isCritHit ? stats["critical_damage"].finalValue : 1));
             }
         }
     }

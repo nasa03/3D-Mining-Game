@@ -20,9 +20,9 @@ public class BlockUiController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Gamemanager.main.player.selectedBlock != null) {
+		if (Gamemanager.main.getLocalPlayer().selectedBlock != null) {
 			panel.SetActive(true);
-			currentBlock = Gamemanager.main.player.selectedBlock.GetComponent<Block>();
+			currentBlock = Gamemanager.main.getLocalPlayer().selectedBlock.GetComponent<Block>();
 			healthSlider.maxValue = (float)currentBlock.savedHealth;
 			healthSlider.value = (float)currentBlock.blockinfo.health;
 			blockName.text = currentBlock.blockinfo.blockname;

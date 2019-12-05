@@ -18,7 +18,7 @@ public class PlayerUIScript : MonoBehaviour {
         int height = Mathf.FloorToInt(-playerManager.transform.position.y);
         
 		cordinate.text = height.ToString();
-		cashText.text = GameFormat.toScientificNotation(Gamemanager.main.player.cash);
+		cashText.text = GameFormat.toScientificNotation(Gamemanager.main.getLocalPlayer().cash);
 	
 	}
 }

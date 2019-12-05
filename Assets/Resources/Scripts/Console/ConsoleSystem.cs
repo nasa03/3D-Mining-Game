@@ -106,8 +106,8 @@ namespace Console
         {
             if (Input.GetKeyDown(KeyCode.F12))
             {
-                if (!Gamemanager.main.player.playerControl)
-                    Gamemanager.main.player.playerControl = true;
+                if (!Gamemanager.main.getLocalPlayer().playerControl)
+                    Gamemanager.main.getLocalPlayer().playerControl = true;
 
                 consoleCanvas.gameObject.SetActive(!consoleCanvas.gameObject.activeInHierarchy);
             }
@@ -117,7 +117,7 @@ namespace Console
                 inputField.Select();
                 inputField.ActivateInputField();
 
-                Gamemanager.main.player.playerControl = false;
+                Gamemanager.main.getLocalPlayer().playerControl = false;
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
                     if(inputText.text != "")

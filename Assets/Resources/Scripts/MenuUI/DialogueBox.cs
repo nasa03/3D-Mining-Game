@@ -10,15 +10,16 @@ public class DialogueBox : MonoBehaviour
     public GameObject boxPanel;
     public Button yesButton, noButton;
     public Text ui_text;
+    PlayerScript localPlayer;
     bool wasPlayerControl = false;
 
     public void createDialogue(string text, UnityAction yesEvent, UnityAction noEvent)
     {
         dialogueGO.SetActive(true);
 
-        if(Gamemanager.main.player.playerControl)
+        if(localPlayer.playerControl)
         {
-            Gamemanager.main.player.playerControl = false;
+            localPlayer.playerControl = false;
             wasPlayerControl = true;
         }
 
@@ -44,7 +45,7 @@ public class DialogueBox : MonoBehaviour
     {
         if (wasPlayerControl)
         {
-            Gamemanager.main.player.playerControl = true;
+            localPlayer.playerControl = true;
         }
         dialogueGO.SetActive(false);
     }

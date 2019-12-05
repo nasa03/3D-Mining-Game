@@ -2,11 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 
-//W.I.P
+//TODO!
 
 public class TriggerDrillScript : MonoBehaviour {
 
     public DrillScript drill;
+    PlayerScript player;
     public float speed;
     public int mineLevel;
     float storeSpeed;
@@ -42,7 +43,7 @@ public class TriggerDrillScript : MonoBehaviour {
             if (speed <= 0)
             {
                 speed = storeSpeed;
-                hits[0].GetComponent<Block>().MineBlock();
+                hits[0].GetComponent<Block>().MineBlock(player);
                 drill.durability -= 1;
                 fetchObject();
             }

@@ -93,7 +93,7 @@ namespace Console
 
         public override void RunCommand(string[] args)
         {
-            Gamemanager.main.player.CreateBomb();
+            Gamemanager.main.getLocalPlayer().CreateBomb();
         }
     }
     public class CommandModifier : ConsoleCommand
@@ -113,7 +113,7 @@ namespace Console
 
         public override void RunCommand(string[] args)
         {
-            ModifierSystem.ApplyModifier(args[1], args[2], int.Parse(args[3]));
+            ModifierSystem.ApplyModifier(Gamemanager.main.getPlayerByID(int.Parse(args[1])), args[2], args[3], int.Parse(args[4]));
         }
     }
     public class CommandGiveXP : ConsoleCommand
@@ -133,7 +133,7 @@ namespace Console
 
         public override void RunCommand(string[] args)
         {
-            Gamemanager.main.player.xp.GiveXP(int.Parse(args[1]));
+            Gamemanager.main.getPlayerByID(int.Parse(args[1])).xp.GiveXP(int.Parse(args[2]));
         }
     }
     public class CommandGivePerkPoint : ConsoleCommand
@@ -153,7 +153,7 @@ namespace Console
 
         public override void RunCommand(string[] args)
         {
-            Gamemanager.main.player.xp.GivePerkPoint(int.Parse(args[1]));
+            Gamemanager.main.getPlayerByID(int.Parse(args[1])).xp.GivePerkPoint(int.Parse(args[2]));
         }
     }
     public class CommandGiveCash : ConsoleCommand
@@ -173,7 +173,7 @@ namespace Console
 
         public override void RunCommand(string[] args)
         {
-            Gamemanager.main.player.GiveCash(int.Parse(args[1]));
+            Gamemanager.main.getPlayerByID(int.Parse(args[1])).GiveCash(int.Parse(args[2]));
         }
     }
 }

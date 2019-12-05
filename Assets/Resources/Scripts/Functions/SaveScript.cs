@@ -24,7 +24,7 @@ public class SaveScript : MonoBehaviour
     public void Save()
     {
         Debug.Log("Accessing Save");
-        PlayerScript player = Gamemanager.main.player;
+        PlayerScript player = Gamemanager.main.getLocalPlayer();
         string jsonString = "{";
 
         using (StreamWriter streamWriter = File.CreateText(dataPath))
@@ -38,7 +38,7 @@ public class SaveScript : MonoBehaviour
                 + "\"PlayerCritDamage\": " + player.stats["critical_damage"].level + ","
                 + "\"PlayerLuck\": " + player.stats["luck"].level + ","
                 + "\"PlayerJet\": " + player.stats["jetpack_force"].level + ",";
-
+            
             // Inventory
             jsonString += "\"Inventory\":[";
 
@@ -165,7 +165,7 @@ public class SaveScript : MonoBehaviour
         {
             for (int i = 0; i < savedData["Perks"].Count; i++)
             {
-                PerkSystem.AssignPerk(savedData["Perks"][i]["ID"].ToString(), (int)savedData["Perks"][i]["Level"]);
+                PerkSystem.AssignPerk(Gamemanager.main.getLocalPlayer(), savedData["Perks"][i]["ID"].ToString(), (int)savedData["Perks"][i]["Level"]);
             }
         }
     }

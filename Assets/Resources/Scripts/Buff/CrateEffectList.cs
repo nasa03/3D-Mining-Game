@@ -24,11 +24,11 @@ namespace BuffEffect {
             AddToList();
         }
 
-        public override void applyBuff(string[] args)
+        public override void applyBuff(PlayerScript player, string[] args)
         {
             double cash = Random.Range(30 , 250) * int.Parse(args[0]);
 
-            Gamemanager.main.player.GiveCash(cash);
+            player.GiveCash(cash);
             Debug.Log("Got " + cash + " from Crate");
         }
     }
@@ -51,9 +51,9 @@ namespace BuffEffect {
             AddToList();
         }
 
-        public override void applyBuff(string[] args)
+        public override void applyBuff(PlayerScript player, string[] args)
         {
-            Gamemanager.main.player.stats["damage"].LevelUp(int.Parse(args[0]));
+            player.stats["damage"].LevelUp(int.Parse(args[0]));
         }
     }
 
@@ -77,7 +77,7 @@ namespace BuffEffect {
             AddToList();
         }
 
-        public override void applyBuff(string[] args)
+        public override void applyBuff(PlayerScript player, string[] args)
         {
             switch (int.Parse(args[0]))
             {

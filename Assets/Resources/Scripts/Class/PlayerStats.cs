@@ -94,13 +94,13 @@ public class PlayerStats : Stats
     }
 
     // Leveling up Stat by purchasing currency
-    public void BuyLevelUp(int level)
+    public void BuyLevelUp(PlayerScript player, int level)
     {
         if(maxLevel <= this.level)
             return;
 
-        if (Gamemanager.main.player.cash >= finalCost)
-            Gamemanager.main.player.GiveCash(-finalCost);
+        if (player.cash >= finalCost)
+            player.GiveCash(-finalCost);
 
         LevelUp(level);
         calculateAll();

@@ -6,7 +6,6 @@ public class Gamemanager : MonoBehaviour
 {
     //Accessable Classes
     public static Gamemanager main = null;
-    public PlayerScript player;
     public DialogueBox dialogue;
 
     //Game Flags
@@ -21,6 +20,8 @@ public class Gamemanager : MonoBehaviour
     public bool option_AutoClick;
     public bool option_AutoSell;
     public bool option_ShowTopUI;
+
+    PlayerScript localPlayer;
 
 
     // UI
@@ -39,9 +40,9 @@ public class Gamemanager : MonoBehaviour
         storeTick = tick;
         isTick = false;
 
-        player = GameObject.Find("Player").GetComponent<PlayerScript>();
         //Perks.PerkSystem.InitPerks();
         GameObject.Find("GameManager").GetComponent<SaveScript>().StoreData();
+        localPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
     }
 
     //TODO: Save Flags
@@ -79,6 +80,16 @@ public class Gamemanager : MonoBehaviour
         }
     }
 
+    public PlayerScript getLocalPlayer()
+    {
+        return localPlayer;
+    }
+
+    public PlayerScript getPlayerByID(int id)
+    {
+        return null;
+    }
+
     /*public BlockInfo getBlock(string name)
     {
         foreach (BlockInfo block in availableBlocks)
@@ -88,8 +99,6 @@ public class Gamemanager : MonoBehaviour
         }
         return availableBlocks[0];
     } */
-
-
 
     public void Option_EnableAutoClick()
     {
