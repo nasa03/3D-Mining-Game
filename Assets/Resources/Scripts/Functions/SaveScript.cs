@@ -11,7 +11,7 @@ using Perks;
 
 public class SaveScript : MonoBehaviour
 { 
-    public static JsonData savedData;
+    JsonData savedData;
     public static bool isReset;
     string dataPath;
 
@@ -122,7 +122,7 @@ public class SaveScript : MonoBehaviour
         Debug.Log("Save File Dumped into " + dataPath);
     }
 
-    public void StoreData()
+    public void ReceiveStoreData()
     {
         if (isReset)
             return;        
@@ -141,7 +141,7 @@ public class SaveScript : MonoBehaviour
         }
     }
     
-    public static void LoadInventory()
+    public void LoadInventory()
     {
         if(savedData != null) { 
             for (int i = 0; i < savedData["Inventory"].Count; i++)
@@ -159,7 +159,7 @@ public class SaveScript : MonoBehaviour
         }
     }
 
-    public static void LoadPerks()
+    public void LoadPerks()
     {
         if (savedData != null)
         {
@@ -168,6 +168,11 @@ public class SaveScript : MonoBehaviour
                 PerkSystem.AssignPerk(Gamemanager.main.getLocalPlayer(), savedData["Perks"][i]["ID"].ToString(), (int)savedData["Perks"][i]["Level"]);
             }
         }
+    }
+
+    public JsonData getSaveData()
+    {
+        return savedData;
     }
 
     void LoadModifiers()

@@ -109,7 +109,7 @@ public class Inventory : MonoBehaviour {
     }
 
     void Start () {
-        SaveScript.LoadInventory();
+        Gamemanager.main.getSaveScript().LoadInventory();
         RefreshInventory();
     }
 

@@ -125,7 +125,7 @@ namespace Perks {
         private void Start()
         {
             InitPerks();
-            SaveScript.LoadPerks();
+            Gamemanager.main.getSaveScript().LoadPerks();
         }
 
         public void InitPerks()

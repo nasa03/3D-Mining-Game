@@ -22,6 +22,9 @@ public class Gamemanager : MonoBehaviour
     public bool option_ShowTopUI;
 
     PlayerScript localPlayer;
+    List<PlayerScript> joinedPlayers;
+    public static int PlayerAmount;
+    SaveScript SaveManager;
 
 
     // UI
@@ -40,9 +43,16 @@ public class Gamemanager : MonoBehaviour
         storeTick = tick;
         isTick = false;
 
+        SaveManager = gameObject.GetComponent<SaveScript>();
+
         //Perks.PerkSystem.InitPerks();
-        GameObject.Find("GameManager").GetComponent<SaveScript>().StoreData();
+        SaveManager.ReceiveStoreData();
+
+
+        joinedPlayers = new List<PlayerScript>();
         localPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        playerJoin(localPlayer);
+
     }
 
     //TODO: Save Flags
@@ -80,6 +90,17 @@ public class Gamemanager : MonoBehaviour
         }
     }
 
+    public void playerJoin(PlayerScript player)
+    {
+        joinedPlayers.Add(player);
+        PlayerAmount++;
+    }
+
+    public void playerDisconnect(PlayerScript player)
+    {
+        joinedPlayers.Remove(player);
+    }
+
     public PlayerScript getLocalPlayer()
     {
         return localPlayer;
@@ -87,7 +108,19 @@ public class Gamemanager : MonoBehaviour
 
     public PlayerScript getPlayerByID(int id)
     {
+        foreach(PlayerScript player in joinedPlayers)
+        {
+            if(player.playerId.Equals(id))
+            {
+                return player;
+            }
+        }
         return null;
+    }
+
+    public SaveScript getSaveScript()
+    {
+        return SaveManager;
     }
 
     /*public BlockInfo getBlock(string name)

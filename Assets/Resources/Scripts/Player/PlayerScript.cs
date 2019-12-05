@@ -1,45 +1,56 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using LitJson;
 
 public class PlayerScript : MonoBehaviour {
 
-    MessageSystem message;
-    private float speedStore;
-    public GameObject selectedBlock, pointer;
-    public Highlightblock highlightBlock;
-    public BlockUiController blockUI;
-    public ParticleSystem hitPart;
-    public Light flashlight;
-    public Camera camera;
+    public double cash { get; set; }
+    public bool playerControl { get; set; }
+    public int playerId { get; set; }
+
     public XPSystem xp;
+
+    public GameObject selectedBlock, pointer;
+    [SerializeField]
+    Highlightblock highlightBlock;
+    [SerializeField]
+    BlockUiController blockUI;
+    [SerializeField]
+    ParticleSystem hitPart;
+    [SerializeField]
+    Light flashlight;
+    [SerializeField]
+    Camera camera;
+    
     bool isClicking;
     bool autoClickEnabled;
 
+    private float speedStore;
+
     Ray ray;
     RaycastHit hit;
-
-    public double cash { get; set; }
-
-    public bool playerControl { get; set; }
 
     public Dictionary<string, PlayerStats> stats = new Dictionary<string, PlayerStats>();
 
     // Use this for initialization
     void Start () {
         //applyPlayerStats(1, 1, 1, 1, 1, 1, 1);
-        
+
+        initPlayer();
+
         if (!SaveScript.isReset)
         {
-            Debug.Log(double.Parse(SaveScript.savedData["CurrencyCash"].ToString()));
-            cash = double.Parse(SaveScript.savedData["CurrencyCash"].ToString());
-            ApplyPlayerStats((int)SaveScript.savedData["PlayerDamage"],
-                (int)SaveScript.savedData["PlayerSpeed"],
-                (int)SaveScript.savedData["PlayerReach"],
-                (int)SaveScript.savedData["PlayerCritChance"],
-                (int)SaveScript.savedData["PlayerCritDamage"],
-                (int)SaveScript.savedData["PlayerLuck"],
-                (int)SaveScript.savedData["PlayerJet"]);
+            JsonData savedData = Gamemanager.main.getSaveScript().getSaveData();
+
+            cash = double.Parse(savedData["CurrencyCash"].ToString());
+            ApplyPlayerStats((int)savedData["PlayerDamage"],
+                (int)savedData["PlayerSpeed"],
+                (int)savedData["PlayerReach"],
+                (int)savedData["PlayerCritChance"],
+                (int)savedData["PlayerCritDamage"],
+                (int)savedData["PlayerLuck"],
+                (int)savedData["PlayerJet"]);
 
             xp = new XPSystem(1,1,15,1.15f);
         }
@@ -58,11 +69,17 @@ public class PlayerScript : MonoBehaviour {
         //cash = 1000000000;
     }
 
+    private void initPlayer()
+    {
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        playerId = Gamemanager.PlayerAmount;
+    }
+
     void ApplyPlayerStats(int damage, int speed, int reach, int critChance, int critDMG, int luck, int jetForce)
     {
         stats.Add("damage", new PlayerStats("Damage", "", 1, 1, damage, 1000, 15, 6));
         stats.Add("speed", new PlayerStats("Speed", "s", 1, -0.01f, speed, 51, 40, 35));
-        stats.Add("reach", new PlayerStats("Reach", "b", 1.5f, 0.75f, reach, 100, 20, 15));
+        stats.Add("reach", new PlayerStats("Reach", "b", 1.5f, 0.025f, reach, 100, 20, 15));
         stats.Add("critical_chance", new PlayerStats("Critical Chance", "%", 3f, 0.25f, critChance, 20, 35, 12));
         stats.Add("critical_damage", new PlayerStats("Critical Damage", "", 1.2f, 0.25f, critDMG, 20, 75, 50));
         stats.Add("luck", new PlayerStats("Luck", "%", 0, 0.75f, luck, 15, 200, 125));
@@ -75,7 +92,6 @@ public class PlayerScript : MonoBehaviour {
     {
         UserInputs();
         OnBlockRaycast();
-       
     }
 
     void OnBlockRaycast()
