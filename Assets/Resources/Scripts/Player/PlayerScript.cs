@@ -186,9 +186,9 @@ public class PlayerScript : MonoBehaviour {
     {
         GameObject bomb = Instantiate(Resources.Load("Prefab/Bomb")) as GameObject;
         bomb.transform.position = transform.position;
-        bomb.GetComponent<Explode>().ignoreOres = false;
-        bomb.GetComponent<Explode>().radius = 18;
-        bomb.GetComponent<Explode>().speed = 0.00001f;
+        bomb.GetComponent<Explode>().ignoreOres = true;
+        bomb.GetComponent<Explode>().level = 30;
+        bomb.GetComponent<Explode>().speed = 0.000001f;
     }
 
     void HitBlock()

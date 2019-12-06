@@ -66,6 +66,19 @@
 			{ "block" : 56, "appearance" : 1.0, "ignoreLuck" : false },
 			{ "block" : 57, "appearance" : 0.1, "ignoreLuck" : false}
 		]
-	}				
+	},
+
+	{
+		"minLayer":200,
+		"maxLayer":250,
+		"radioactivity":1,
+		"blocks":[
+			{ "block" : "Crust", "appearance" : 600.0, "ignoreLuck" : true },
+			{ "block" : "Obsidian", "appearance" : 50.0, "ignoreLuck" : true },
+			{ "block" : "Gold", "appearance" : 8.0, "ignoreLuck" : false },
+			{ "block" : "Diamond", "appearance" : 1.0, "ignoreLuck" : false },
+			{ "block" : "Crate-E", "appearance" : 1.0, "ignoreLuck" : false }
+		]
+	}
    ]
 }
