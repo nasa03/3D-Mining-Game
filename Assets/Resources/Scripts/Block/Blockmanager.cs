@@ -34,7 +34,7 @@ public class Blockmanager : MonoBehaviour {
         else if (main != this)
             Destroy(gameObject);
 
-        InitScript init = new InitScript();
+        JsonReader init = new JsonReader();
         availableBlocks = init.readBlocks();
         dimension = init.readDimension();
         blockPrefab = Resources.Load("Prefab/BlockPrefab") as GameObject;

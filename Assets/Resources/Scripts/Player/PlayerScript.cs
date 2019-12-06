@@ -27,6 +27,7 @@ public class PlayerScript : MonoBehaviour {
     bool autoClickEnabled;
 
     private float speedStore;
+    private float dealthDamage;
 
     Ray ray;
     RaycastHit hit;
@@ -80,8 +81,8 @@ public class PlayerScript : MonoBehaviour {
         stats.Add("damage", new PlayerStats("Damage", "", 1, 1, damage, 1000, 15, 6));
         stats.Add("speed", new PlayerStats("Speed", "s", 1, -0.01f, speed, 51, 40, 35));
         stats.Add("reach", new PlayerStats("Reach", "b", 1.5f, 0.025f, reach, 100, 20, 15));
-        stats.Add("critical_chance", new PlayerStats("Critical Chance", "%", 3f, 0.25f, critChance, 20, 35, 12));
-        stats.Add("critical_damage", new PlayerStats("Critical Damage", "", 1.2f, 0.25f, critDMG, 20, 75, 50));
+        stats.Add("critical_chance", new PlayerStats("Critical Chance", "%", 0f, 0.25f, critChance, 40, 150, 150));
+        stats.Add("critical_damage", new PlayerStats("Critical Damage", "", 1.2f, 0.1f, critDMG, 40, 300, 300));
         stats.Add("luck", new PlayerStats("Luck", "%", 0, 0.75f, luck, 15, 200, 125));
         stats.Add("jetpack_force", new PlayerStats("Jetpack Force", "", 0.05f, 0.05f, jetForce, 10, 150, 100));
         //stats["speed"].addModifier(new StatModifier("Test", "%", Operant.add, "This is a test Modifier", -0.8f, 5));
@@ -204,14 +205,18 @@ public class PlayerScript : MonoBehaviour {
                 }
 
                 bool isCritHit = CriticalHit(stats["critical_chance"].finalValue);
+                dealthDamage = stats["damage"].finalValue;
 
-                if(isCritHit)
+                if (isCritHit)
                 {
                     AudioManager.main.Play("Block_Crit", Random.Range(0.75f, 1.5f), highlightBlock.gameObject, false);
+                    dealthDamage *= stats["critical_damage"].finalValue;
                 }
 
+                 
+
                 //Instantiate(hitPart, selectedBlock.transform.position, Quaternion.Inverse(transform.GetComponentInChildren<Camera>().transform.rotation));
-                selectedBlock.GetComponent<Block>().HurtBlock(this, stats["damage"].finalValue * (isCritHit ? stats["critical_damage"].finalValue : 1));
+                selectedBlock.GetComponent<Block>().HurtBlock(this, dealthDamage);
             }
         }
     }

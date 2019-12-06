@@ -17,9 +17,9 @@ public class DialogueBox : MonoBehaviour
     {
         dialogueGO.SetActive(true);
 
-        if(localPlayer.playerControl)
+        if(Gamemanager.main.getLocalPlayer().playerControl)
         {
-            localPlayer.playerControl = false;
+            Gamemanager.main.getLocalPlayer().playerControl = false;
             wasPlayerControl = true;
         }
 

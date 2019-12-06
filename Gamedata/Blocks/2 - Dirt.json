@@ -2,7 +2,7 @@
 	"id":2,
 	"name":"Dirt",
 	"desc":"It's stinky and everywhere!\n\nKeep it for something useful later.",
-	"health":15.0,
+	"health":5.0,
 	"cash":0.0,
 	"xp":0,
 	"colorRed":233,

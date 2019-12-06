@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-public class InitScript
+public class JsonReader
 {
     JsonData blockJson;
 
