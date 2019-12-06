@@ -139,8 +139,16 @@ public class JsonReader
 
             for (int o = 0; o < info["layers"][i]["blocks"].Count; o++)
             {
+                // Check if the Block is a string or int
+                int blockId;
+                string blockName = info["layers"][i]["blocks"][o]["block"].ToString();
+                if (!int.TryParse(blockName, out blockId))
+                {
+                    blockId = Blockmanager.main.GetBlockID(blockName);
+                }
+
                 jsonDimension.layers[i].blocks[o] = new LayerBlock(
-                    (int)info["layers"][i]["blocks"][o]["block"],
+                    blockId,
                     (double)info["layers"][i]["blocks"][o]["appearance"],
                     (bool)info["layers"][i]["blocks"][o]["ignoreLuck"]
                     );

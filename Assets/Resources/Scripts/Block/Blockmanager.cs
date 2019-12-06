@@ -148,6 +148,16 @@ public class Blockmanager : MonoBehaviour {
         return availableBlocks[0];
     }
 
+    public int GetBlockID(string name)
+    {
+        foreach (BlockInfo block in availableBlocks)
+        {
+            if (block.blockname == name)
+                return block.id;
+        }
+        return availableBlocks[0].id;
+    }
+
     public BlockInfo[] GetAllBlocks()
     {
         return availableBlocks.ToArray();
