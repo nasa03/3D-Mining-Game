@@ -34,9 +34,8 @@ public class PlayerScript : MonoBehaviour {
 
     public Dictionary<string, PlayerStats> stats = new Dictionary<string, PlayerStats>();
 
-    // Use this for initialization
-    void Start () {
-        //applyPlayerStats(1, 1, 1, 1, 1, 1, 1);
+
+    void Awake () {
 
         initPlayer();
 

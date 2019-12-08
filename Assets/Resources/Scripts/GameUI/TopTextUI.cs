@@ -27,6 +27,7 @@ public class TopTextUI : MonoBehaviour
         text = GetComponent<TextMeshProUGUI>();
         text.text = TextFormat(textUI);
         UIValue = carriedValue;
+        Debug.Log(carriedValue);
 
         //Components for Top Text UI
         colorchange = GetComponent<ColorChange>();
